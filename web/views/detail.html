@@ -1,0 +1,28 @@
+<div detail-ctrl id="detail-body" >
+  <div id="detail-wc">
+      <div id="detail-image" class="col-sm-4">
+          <img ng-src="{{selectedWC.imageLink}}"/>
+      </div>
+      <div class="col-md-8">
+          <h1>{{selectedWC.name}}</h1>
+          <p>{{selectedWC.description}}</p>
+
+          <a class="btn btn-default" href="{{selectedWC.githubLink + '/archive/master.zip'}}">
+              <i class="fa fa-download"></i> Download
+          </a>
+
+          <a class="btn btn-default" href="{{selectedWC.githubLink}}" target="_blank">
+              <i class="fa fa-github"></i>  Github repository
+          </a>
+
+          <p style="margin: 20px 0"><a href="{{selectedWC.demoLink}}">Link to demo</a></a></p>
+      </div>
+  </div>
+  <div ng-if="selectedWC.demoType == 'jsfiddle'">
+      <iframe width="100%" height="350" ng-src="{{selectedWC.demoLinkUrl}}" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+  </div>
+  <div ng-if="selectedWC.demoType == 'codepen'">
+      <p data-height="268" data-theme-id="0" data-slug-hash="{{selectedWC.codePen.slugHash}}" data-user="{{selectedWC.codePen.user}}" data-default-tab="result" class='codepen'></p>
+      <script async src="//codepen.io/assets/embed/ei.js"></script>
+  </div>
+</div>

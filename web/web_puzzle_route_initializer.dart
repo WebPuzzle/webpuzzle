@@ -13,7 +13,13 @@ class WebPuzzleRouteInitializer implements RouteInitializer {
                name: 'list',
                path: "/list",
                defaultRoute: true,
-               enter: view('views/list.html')
-      ));
+               enter: view('views/list.html'),
+               mount: (Route route) => route
+                  ..addRoute(
+                      name: 'detail', 
+                      path: '/detail/:id', 
+                      enter: view('views/detail.html')
+               
+      )));
   }
 }
