@@ -1,4 +1,4 @@
-part of talk_to_me;
+part of webpuzzle;
 
 class Call {
   String id;

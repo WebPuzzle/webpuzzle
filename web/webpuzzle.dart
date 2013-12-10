@@ -1,4 +1,4 @@
-library talk_to_me;
+library webpuzzle;
 
 import 'package:angular/angular.dart';
 import 'package:angular/routing/module.dart';
