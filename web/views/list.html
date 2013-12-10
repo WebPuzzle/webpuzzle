@@ -1,0 +1,36 @@
+<div list-ctrl>
+    <div id="list-toolbar">
+        <!-- Sorting selector -->
+        <div class="col-sm-4">
+            <div class="col-sm-4">                
+              {{sortingTooltip.text}}
+            </div>
+            <div class="btn-group list-toolbar-component" id="list-sorting-selector">
+                <button title="title" ng-repeat="wc in listCtrl.webcomponents" type="button" class="btn btn-primary">
+                    <i ng-class="sortingType.iconCss" ></i>
+                </button>
+            </div>
+        </div>
+        <!-- Text input to filter by name and author -->
+        <div class="col-sm-4">
+            <div class="input-group list-toolbar-component">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                <input type="text" class="form-control" placeholder="Filter by name">
+            </div>
+        </div>
+        <!-- Filter selector, by name of author -->
+        <div class="col-sm-4">
+            <div class="btn-group list-toolbar-component">
+                <button ng-repeat="wc in listCtrl.webcomponents" type="button"
+                        class="btn btn-primary">
+                    type du filtre
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- WebComponent list -->
+    <div ng-repeat="wc in listCtrl.webcomponents">
+             {{wc.name}}
+    </div>
+</div>
