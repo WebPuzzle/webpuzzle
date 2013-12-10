@@ -4,9 +4,9 @@ class WebPuzzleRouteInitializer implements RouteInitializer {
   init(Router router, ViewFactory view) {
     router.root
       ..addRoute(
-          name: 'create',
-          path: '/create',
-          enter: view('views/create.html'),
+          name: 'app',
+          path: '/app',
+          enter: view('views/app.html'),
           defaultRoute: true,
           mount: (Route route) => route
             ..addRoute(
