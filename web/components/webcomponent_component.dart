@@ -17,4 +17,8 @@ class WebcomponentComponent {
 
   WebcomponentComponent(){
   }
+  
+  void selectWC(wc) {
+    print("this will select a $wc");
+  }
 }
