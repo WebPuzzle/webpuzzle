@@ -9,7 +9,7 @@ class ListCtrl {
   
   Http _http;
   
-  var webcomponents;
+  var webcomponents = [];
   
   var filters = ['filtre 1', 'filtre 2'];
   

@@ -31,36 +31,7 @@
 
     <!-- WebComponent list -->
     <div ng-repeat="wc in listCtrl.webcomponents | filter:{name:listCtrl.nameFilter}" class="col-md-6 col-lg-4 wc-container">
-      <div class="wc">
-        <div class="wc-image-container">
-            <a>
-                <img ng-src="{{wc.imageLink}}" class="wc-image"/>
-            </a>
-        </div>
-        <div class="wc-text">
-            <a ng-show="wcClickable" ui-sref='app.list.detail({id:wc.id})'>
-                <h3 class="wc-title" ng-class="{'hovering':hovering}">
-                    {{wc.name}}
-                </h3>
-            </a>
-            <a ng-show="wcClickable" ui-sref='app.list.detail({id:wc.id})'>
-                <p class="wc-description" ng-class="{'hovering':hovering}">
-                    {{wc.description}}
-                </p>
-            </a>
-        </div>
-        <a href="{{wc.githubLink}}" target="_blank">
-            <div class="fa fa-github fa-2x icon-github">
-                <div class="github-tooltip" title="GitHub repo">
-                </div>
-            </div>
-        </a>
-        <a href="{{wc.githubLink + '/archive/master.zip'}}" target="_blank">
-            <div class="fa fa-download fa-2x icon-download">
-                <div class="github-tooltip" title="Download from Github Master">
-                </div>
-            </div>
-        </a>
-      </div>
+      <webcomponent wcmodel="wc"></webcomponent>
+      
     </div>
 </div>
