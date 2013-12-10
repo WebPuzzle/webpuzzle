@@ -1,4 +1,4 @@
-<div class="wc">
+<div class="wc" ng-mouseover="wcCtrl.hovering = true" ng-mouseleave="wcCtrl.hovering = false">
   <div class="wc-image-container">
       <a>
           <img ng-src="{{wcCtrl.wc.imageLink}}" class="wc-image"/>
@@ -6,24 +6,34 @@
   </div>
   <div class="wc-text">
   
-      <a ng-show="wcCtrl.wcClickable" ui-sref='app.list.detail({id:wc.id})'>
+      <a ng-if="wcCtrl.wcClickable" >
           <h3 class="wc-title" ng-class="{'hovering':wcCtrl.hovering}">
               {{wcCtrl.wc.name}}
           </h3>
       </a>
-      <a ng-show="wcCtrl.wcClickable" ui-sref='app.list.detail({id:wc.id})'>
+      <a ng-if="!wcCtrl.wcClickable">
+            <h3 class="wc-title" ng-class="{'hovering':wcCtrl.hovering}">
+                {{wcCtrl.wc.name}}
+            </h3>
+        </a>
+      <a ng-if="wcCtrl.wcClickable" >
           <p class="wc-description" ng-class="{'hovering':wcCtrl.hovering}">
               {{wcCtrl.wc.description}}
           </p>
       </a>
+      <a ng-if="!wcCtrl.wcClickable">
+            <p class="wc-description" ng-class="{'hovering':wcCtrl.hovering}">
+                {{wcCtrl.wc.description}}
+            </p>
+        </a>
   </div>
-  <a href="{{wcCtrl.wc.githubLink}}" target="_blank">
+  <a href="{{(wcCtrl.wcClickable)? wcCtrl.wc.githubLink : ''}}" target="_blank">
       <div class="fa fa-github fa-2x icon-github">
           <div class="github-tooltip" title="GitHub repo">
           </div>
       </div>
   </a>
-  <a href="{{wcCtrl.wc.githubLink + '/archive/master.zip'}}" target="_blank">
+  <a href="{{(wcCtrl.wcClickable)? wcCtrl.wc.githubLink + '/archive/master.zip' : ''}}" target="_blank">
       <div class="fa fa-download fa-2x icon-download">
           <div class="github-tooltip" title="Download from Github Master">
           </div>

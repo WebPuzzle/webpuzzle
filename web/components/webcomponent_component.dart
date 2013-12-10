@@ -9,9 +9,12 @@ part of webpuzzle;
 class WebcomponentComponent {
   @NgTwoWay("wcmodel")
   var wc;
+  
+  @NgTwoWay("clickable")
+  var wcClickable = true;
+  
+  var hovering = false;
 
   WebcomponentComponent(){
-    print("agenda is here !!");
-    print(wc);
   }
 }
