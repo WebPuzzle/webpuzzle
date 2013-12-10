@@ -7,21 +7,9 @@ part of talk_to_me;
 class ListCtrl {
   Router router;
   
-  var webcomponents = [
-  {'name'  : 'partridge'},
-  {'name'  : 'fgdfg'},
-  {'name'  : 'partridge'},
-  {'name'  : 'fgdfg'},
-  {'name'  : 'partridge'},
-  {'name'  : 'fgdfg'},
-  {'name'  : 'partridge'},
-  {'name'  : 'fgdfg'},
-  {'name'  : 'partridge'},
-  {'name'  : 'fgdfg'},
-  {'name'  : 'partridge'},
-  {'name'  : 'fgdfg'},
-  {'name'  : 'partfdgdfgdfgdfgdfgdfgridge'}
-  ];
+  Http _http;
+  
+  var webcomponents;
   
   var filters = ['filtre 1', 'filtre 2'];
   
@@ -32,6 +20,10 @@ class ListCtrl {
     {'name'  : 'pop inv'}
   ];
 
-  ListCtrl(this.router){
+  ListCtrl(Router this.router, Http this._http){
+    _http(method: 'GET', url: 'webcomponents.json').then((HttpResponse data) {
+      webcomponents = data.data;
+      print(data);
+    });
   }
 }
