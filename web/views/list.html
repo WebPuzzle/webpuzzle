@@ -6,9 +6,8 @@
               {{sortingTooltip.text}}
             </div>
             <div class="btn-group list-toolbar-component" id="list-sorting-selector">
-                <button title="title" ng-repeat="sorting in listCtrl.sortingTypes" type="button" class="btn btn-primary">
+                <button title="{{sortingType.name}}" ng-repeat="sortingType in listCtrl.sortingTypes" type="button" class="btn btn-primary">
                     <i ng-class="sortingType.iconCss" ></i>
-                    {{sorting.name}}
                 </button>
             </div>
         </div>
@@ -16,7 +15,7 @@
         <div class="col-sm-4">
             <div class="input-group list-toolbar-component">
                 <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-                <input type="text" class="form-control" placeholder="Filter by name">
+                <input type="text" class="form-control" placeholder="Filter by name" ng-model="listCtrl.nameFilter">
             </div>
         </div>
         <!-- Filter selector, by name of author -->
@@ -31,7 +30,7 @@
     </div>
 
     <!-- WebComponent list -->
-    <div ng-repeat="wc in listCtrl.webcomponents" class="col-md-6 col-lg-4 wc-container">
+    <div ng-repeat="wc in listCtrl.webcomponents | filter:{name:listCtrl.nameFilter}" class="col-md-6 col-lg-4 wc-container">
       <div class="wc">
         <div class="wc-image-container">
             <a>
