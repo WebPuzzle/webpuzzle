@@ -6,8 +6,6 @@ import 'package:logging/logging.dart';
 
 part 'web_puzzle_route_initializer.dart';
 
-part 'models/call.dart';
-part 'models/agenda_item.dart';
 part 'views/list_ctrl.dart';
 part 'views/app_ctrl.dart';
 
