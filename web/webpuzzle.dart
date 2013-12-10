@@ -10,6 +10,7 @@ part 'views/list_ctrl.dart';
 part 'views/app_ctrl.dart';
 part 'views/detail_ctrl.dart';
 part 'components/webcomponent_component.dart';
+part 'services/selected_wc.dart';
 
 class TalkToMeApp extends Module {
   TalkToMeApp(){
@@ -17,6 +18,7 @@ class TalkToMeApp extends Module {
     type(AppCtrl);
     type(DetailCtrl);
     type(WebcomponentComponent);
+    type(SelectedWC);
 
     type(RouteInitializer, implementedBy: WebPuzzleRouteInitializer);
     factory(NgRoutingUsePushState, (_) => new NgRoutingUsePushState.value(false));

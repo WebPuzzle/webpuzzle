@@ -6,8 +6,14 @@ part of webpuzzle;
 )
 class DetailCtrl {
 
-  DetailCtrl (Scope scope){
-
+  var selectedWCService;
+  
+  var selectedWC;
+  
+  DetailCtrl (Scope scope, SelectedWC selectedWC){
+    this.selectedWCService = selectedWC;
+    this.selectedWC = selectedWCService.selectedWC;
+    print("selectedWC in found in detail is ${this.selectedWC}");
   }
 }
 
