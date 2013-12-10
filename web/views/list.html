@@ -21,9 +21,9 @@
         <!-- Filter selector, by name of author -->
         <div class="col-sm-4">
             <div class="btn-group list-toolbar-component">
-                <button ng-repeat="filter in listCtrl.filters" type="button"
+                <button ng-repeat="filter in listCtrl.filterTypes" type="button"
                         class="btn btn-primary">
-                    {{filter}}
+                    {{filter.name}}
                 </button>
             </div>
         </div>

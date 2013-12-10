@@ -38,6 +38,16 @@ class ListCtrl {
   }
   ];
 
+  var filterTypes = [
+   {
+     'name': 'By name',
+     'filter': 'name'
+   },
+   {
+     'name': 'By author',
+     'filter': 'submitter'
+   }
+   ];
 
   ListCtrl(Router this.router, Http this._http){
     _http(method: 'GET', url: 'webcomponents.json').then((HttpResponse data) {
