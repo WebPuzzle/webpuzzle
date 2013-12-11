@@ -7,6 +7,7 @@ part of webpuzzle;
 class ListCtrl {
   Router router;
   Http _http;
+  Scope scope;
   var webcomponents = [];
   var filters = ['filtre 1', 'filtre 2'];
   var nameFilter = '';
@@ -18,7 +19,7 @@ class ListCtrl {
   
   var bool = true;
 
-  ListCtrl(Router this.router, Http this._http){
+  ListCtrl(Router this.router, Http this._http, Scope this.scope){
     _http(method: 'GET', url: 'webcomponents.json').then((HttpResponse data) {
       webcomponents = data.data;
     });
