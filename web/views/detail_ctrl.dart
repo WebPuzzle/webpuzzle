@@ -13,7 +13,6 @@ class DetailCtrl {
   DetailCtrl (RouteProvider routeProvider , SelectedWCService this.selectedWCService, Http http){
     selectedWC = selectedWCService.selectedWC;
     currentId = routeProvider.parameters["id"];
-    
     if (selectedWC == null){
       http.get('http://webpuzzlews.herokuapp.com/web_components/$currentId.json').then((HttpResponse response) {
       selectedWCService.selectedWC = response.data;
