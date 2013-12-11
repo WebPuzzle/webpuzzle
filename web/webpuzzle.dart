@@ -14,8 +14,8 @@ part 'views/create/create_additional_info_ctrl.dart';
 part 'components/webcomponent_component.dart';
 part 'services/selected_wc.dart';
 
-class TalkToMeApp extends Module {
-  TalkToMeApp(){
+class WebPuzzleApp extends Module {
+  WebPuzzleApp(){
     type(ListCtrl);
     type(AppCtrl);
     type(DetailCtrl);
@@ -32,5 +32,5 @@ class TalkToMeApp extends Module {
 main(){
   Logger.root.level = Level.FINEST;
   Logger.root.onRecord.listen((LogRecord r) { print(r.message); });
-  ngBootstrap(module: new TalkToMeApp());
+  ngBootstrap(module: new WebPuzzleApp());
 }
