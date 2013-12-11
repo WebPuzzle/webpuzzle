@@ -24,17 +24,20 @@
         <!-- Filter selector, by name of author -->
         <div ng-class="{list : 'col-sm-4', detail : ''}[listCtrl.viewMode]"">
             <div class="btn-group list-toolbar-component">
-                <button ng-repeat="filter in listCtrl.filterTypes" type="button"
-                        class="btn btn-primary">
-                    {{filter.name}}
+                <button ng-repeat="filterType in listCtrl.filterTypes" 
+                type="button"
+                class="btn btn-primary"
+                ng-class="{true: 'active', false: ''}[filterType.selected]"
+                ng-click="listCtrl.selectFilterType(filterType)">
+                    {{filterType.name}}
                 </button>
             </div>
         </div>
     </div>
-
     <!-- WebComponent list -->
     <div ng-class="{list : 'list-infinite-container', detail : 'list-detail-infinite-container'}[listCtrl.viewMode]">
-      <div ng-repeat="wc in listCtrl.webcomponents  | orderBy:listCtrl.selectedSortingFilter| filter:{name:listCtrl.nameFilter}" ng-class="{list : 'col-md-6 col-lg-4', detail : ''}[listCtrl.viewMode]">
+      <div ng-repeat="wc in listCtrl.webcomponents  | orderBy:listCtrl.selectedSortingFilter| filter:{listCtrl.selectedFilter : listCtrl.nameFilter}" 
+      ng-class="{list : 'col-md-6 col-lg-4', detail : ''}[listCtrl.viewMode]">
         <webcomponent wcmodel="wc"></webcomponent>
       </div>
     </div>

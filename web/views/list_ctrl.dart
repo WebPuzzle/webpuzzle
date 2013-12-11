@@ -13,6 +13,7 @@ class ListCtrl {
   var sortingTypes;
   var filterTypes;
   var selectedSortingFilter = 'name';
+  var selectedFilter = 'name';
   var viewMode;
   
   var bool = true;
@@ -35,7 +36,7 @@ class ListCtrl {
      'name': 'Ascending alphabetical order',
      'iconCss': 'fa fa-sort-alpha-asc',
      'filter': 'name',
-     'selected' : false
+     'selected' : true
    },
    {
      'name': 'Descending alphabetical order',
@@ -60,18 +61,26 @@ class ListCtrl {
     filterTypes = [
    {
      'name': 'By name',
-     'filter': 'name'
+     'filter': 'name',
+     'selected' : true
    },
    {
      'name': 'By author',
-     'filter': 'submitter'
+     'filter': 'submitter',
+     'selected': false
    }
    ];
   }
   
   selectSortingType(sortingType){
-    sortingType['selected'] = true;
     sortingTypes.forEach((type) => type['selected'] = false);
+    sortingType['selected'] = true;
     selectedSortingFilter = sortingType['filter'];
+  }
+  
+  selectFilterType(filter){
+    filterTypes.forEach((type) => type['selected'] = false);
+    filter['selected'] = true;
+    selectedFilter = filter['filter'];
   }
 }
