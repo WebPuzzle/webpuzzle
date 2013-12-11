@@ -32,7 +32,7 @@
 
     <!-- WebComponent list -->
     <div ng-class="{list : 'list-infinite-container', detail : 'list-detail-infinite-container'}[listCtrl.viewMode]">
-      <div ng-repeat="wc in listCtrl.webcomponents | filter:{name:listCtrl.nameFilter}" ng-class="{list : 'col-md-6 col-lg-4', detail : ''}[listCtrl.viewMode]">
+      <div ng-repeat="wc in listCtrl.webcomponents  | orderBy:listCtrl.selectedSortingFilter| filter:{name:listCtrl.nameFilter}" ng-class="{list : 'col-md-6 col-lg-4', detail : ''}[listCtrl.viewMode]">
         <webcomponent wcmodel="wc"></webcomponent>
       </div>
     </div>

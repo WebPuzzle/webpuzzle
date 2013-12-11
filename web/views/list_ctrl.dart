@@ -12,6 +12,7 @@ class ListCtrl {
   var nameFilter = '';
   var sortingTypes;
   var filterTypes;
+  var selectedSortingFilter = 'name';
   var viewMode;
 
   ListCtrl(Router this.router, Http this._http){
@@ -63,6 +64,6 @@ class ListCtrl {
   }
   
   selectSortingType(sortingType){
-    
+    selectedSortingFilter = sortingType['filter'];
   }
 }
