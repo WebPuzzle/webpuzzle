@@ -6,7 +6,9 @@
               {{sortingTooltip.text}}
             </div>
             <div class="btn-group list-toolbar-component" id="list-sorting-selector">
-                <button title="{{sortingType.name}}" ng-repeat="sortingType in listCtrl.sortingTypes" type="button" 
+                <button title="{{sortingType.name}}" 
+                ng-class="{true: 'active', false: ''}[sortingType.selected]"
+                ng-repeat="sortingType in listCtrl.sortingTypes" type="button" 
                 class="btn btn-primary" ng-click="listCtrl.selectSortingType(sortingType)">
                     <i ng-class="sortingType.iconCss" ></i>
                 </button>

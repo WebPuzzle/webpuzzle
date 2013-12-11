@@ -14,6 +14,8 @@ class ListCtrl {
   var filterTypes;
   var selectedSortingFilter = 'name';
   var viewMode;
+  
+  var bool = true;
 
   ListCtrl(Router this.router, Http this._http){
     _http(method: 'GET', url: 'webcomponents.json').then((HttpResponse data) {
@@ -32,22 +34,26 @@ class ListCtrl {
    {
      'name': 'Ascending alphabetical order',
      'iconCss': 'fa fa-sort-alpha-asc',
-     'filter': 'name'
+     'filter': 'name',
+     'selected' : false
    },
    {
      'name': 'Descending alphabetical order',
      'iconCss': 'fa fa-sort-alpha-desc',
-     'filter': '-name'
+     'filter': '-name',
+     'selected' : false
    },
    {
      'name': 'Descending popularity order',
      'iconCss': 'fa fa-sort-amount-desc',
-     'filter': '-popularity'
+     'filter': '-popularity',
+     'selected' : false
    },
    {
      'name': 'Ascending popularity order',
      'iconCss': 'fa fa-sort-amount-asc',
-     'filter': 'popularity'
+     'filter': 'popularity',
+     'selected' : false
    }
    ];
     
@@ -64,6 +70,8 @@ class ListCtrl {
   }
   
   selectSortingType(sortingType){
+    sortingType['selected'] = true;
+    sortingTypes.forEach((type) => type['selected'] = false);
     selectedSortingFilter = sortingType['filter'];
   }
 }
