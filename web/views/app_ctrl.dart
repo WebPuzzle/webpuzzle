@@ -5,9 +5,11 @@ part of webpuzzle;
     publishAs: "appCtrl"
 )
 class AppCtrl {
+  
+  String authentUrl;
 
-  AppCtrl (Scope scope){
-
+  AppCtrl (Scope scope, WsUrl _ws_url){
+    authentUrl = _ws_url.webServiceUrl;
   }
 }
 
