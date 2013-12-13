@@ -9,13 +9,13 @@ class ListCtrl {
   Http _http;
   Scope scope;
   var webcomponents = [];
-  var filters = ['filtre 1', 'filtre 2'];
   var nameFilter = '';
   var sortingTypes;
   var filterTypes;
   var selectedSortingFilter = 'name';
   var selectedFilter = 'name';
   var viewMode;
+  var filterObject = {'name': '', 'submitter': ''};
   
   var bool = true;
 
@@ -24,12 +24,17 @@ class ListCtrl {
       webcomponents = data.data;
     });
     viewMode = router.activePath.last.name;
-    print("viewMode is now $viewMode");
     router.onRouteStart.listen((RouteStartEvent rse) {
       rse.completed.then((bool){
         viewMode = router.activePath.last.name;
-        print("viewMode is now $viewMode");
       });
+    });
+    
+    //Binding a custom filterObject to the view to filter by name and submitter
+    scope.$watch('listCtrl.nameFilter', () => filterObject[selectedFilter] = nameFilter);
+    scope.$watch('listCtrl.selectedFilter',() {
+      filterObject = {'name': '', 'submitter': ''};
+      filterObject[selectedFilter] = nameFilter;
     });
     
     sortingTypes = [
@@ -77,6 +82,7 @@ class ListCtrl {
     sortingTypes.forEach((type) => type['selected'] = false);
     sortingType['selected'] = true;
     selectedSortingFilter = sortingType['filter'];
+
   }
   
   selectFilterType(filter){
