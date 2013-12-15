@@ -1,49 +1,50 @@
-<div list-ctrl ng-class="{list : '', detail : 'list-body'}[listCtrl.viewMode]">
-    <div id="list-toolbar">
-        <!-- Sorting selector -->
-        <div ng-class="{list : 'col-sm-4', detail : 'list-detail-sorting-selector'}[listCtrl.viewMode]">
-            <div ng-class="{list : 'list-sorting-tooltip', detail : 'list-detail-sorting-tooltip'}[listCtrl.viewMode]">                
-              {{sortingTooltip.text}}
-            </div>
-            <div class="btn-group list-toolbar-component" id="list-sorting-selector">
-                <button title="{{sortingType.name}}" 
-                ng-class="{true: 'active', false: ''}[sortingType.selected]"
-                ng-repeat="sortingType in listCtrl.sortingTypes" type="button" 
-                class="btn btn-primary" ng-click="listCtrl.selectSortingType(sortingType)">
-                    <i ng-class="sortingType.iconCss" ></i>
-                </button>
-            </div>
-        </div>
-        <!-- Text input to filter by name and author -->
-        <div ng-class="{list : 'col-sm-4', detail : ''}[listCtrl.viewMode]">
-            <div class="input-group list-toolbar-component">
-                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-                <input type="text" class="form-control" placeholder="Filter by name" ng-model="listCtrl.nameFilter">
-            </div>
-        </div>
-        <!-- Filter selector, by name of author -->
-        <div ng-class="{list : 'col-sm-4', detail : ''}[listCtrl.viewMode]"">
-            <div class="btn-group list-toolbar-component">
-                <button ng-repeat="filterType in listCtrl.filterTypes" 
-                type="button"
-                class="btn btn-primary"
-                ng-class="{true: 'active', false: ''}[filterType.selected]"
-                ng-click="listCtrl.selectFilterType(filterType)">
-                    {{filterType.name}}
-                </button>
-            </div>
-        </div>
-    </div>
-    <!-- WebComponent list -->
-    <div ng-class="{list : 'list-infinite-container', detail : 'list-detail-infinite-container'}[listCtrl.viewMode]">
-      <div class="wc-container" 
-      ng-repeat="wc in listCtrl.webcomponents  | orderBy:listCtrl.selectedSortingFilter| filter:listCtrl.filterObject" 
-      ng-class="{list : 'col-md-6 col-lg-4', detail : ''}[listCtrl.viewMode]">
-        <webcomponent wcmodel="wc"></webcomponent>
+<div list-ctrl>
+  <div ng-class="{list : '', detail : 'list-body'}[listCtrl.viewMode]">
+      <div id="list-toolbar">
+          <!-- Sorting selector -->
+          <div ng-class="{list : 'col-sm-4', detail : 'list-detail-sorting-selector'}[listCtrl.viewMode]">
+              <div ng-class="{list : 'list-sorting-tooltip', detail : 'list-detail-sorting-tooltip'}[listCtrl.viewMode]">                
+                {{sortingTooltip.text}}
+              </div>
+              <div class="btn-group list-toolbar-component" id="list-sorting-selector">
+                  <button title="{{sortingType.name}}" 
+                  ng-class="{true: 'active', false: ''}[sortingType.selected]"
+                  ng-repeat="sortingType in listCtrl.sortingTypes" type="button" 
+                  class="btn btn-primary" ng-click="listCtrl.selectSortingType(sortingType)">
+                      <i ng-class="sortingType.iconCss" ></i>
+                  </button>
+              </div>
+          </div>
+          <!-- Text input to filter by name and author -->
+          <div ng-class="{list : 'col-sm-4', detail : ''}[listCtrl.viewMode]">
+              <div class="input-group list-toolbar-component">
+                  <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                  <input type="text" class="form-control" placeholder="Filter by name" ng-model="listCtrl.nameFilter">
+              </div>
+          </div>
+          <!-- Filter selector, by name of author -->
+          <div ng-class="{list : 'col-sm-4', detail : ''}[listCtrl.viewMode]"">
+              <div class="btn-group list-toolbar-component">
+                  <button ng-repeat="filterType in listCtrl.filterTypes" 
+                  type="button"
+                  class="btn btn-primary"
+                  ng-class="{true: 'active', false: ''}[filterType.selected]"
+                  ng-click="listCtrl.selectFilterType(filterType)">
+                      {{filterType.name}}
+                  </button>
+              </div>
+          </div>
       </div>
-    </div>
-    
-    <div ng-class="{'list' : '', 'detail' : 'list-detail-view'}[listCtrl.viewMode]">
-      <ng-view></ng-view>
-    </div>
+      <!-- WebComponent list -->
+      <div ng-class="{list : 'list-infinite-container', detail : 'list-detail-infinite-container'}[listCtrl.viewMode]">
+        <div class="wc-container" 
+        ng-repeat="wc in listCtrl.webcomponents  | orderBy:listCtrl.selectedSortingFilter| filter:listCtrl.filterObject" 
+        ng-class="{list : 'col-md-6 col-lg-4', detail : ''}[listCtrl.viewMode]">
+          <webcomponent wcmodel="wc"></webcomponent>
+        </div>
+      </div>
+  </div>
+  <div ng-class="{'list' : '', 'detail' : 'list-detail-view'}[listCtrl.viewMode]">
+        <ng-view></ng-view>
+      </div>
 </div>
