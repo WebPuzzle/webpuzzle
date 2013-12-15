@@ -7505,7 +7505,11 @@ body {
 }
 
 .wc-text-selected {
-  background-color: #D3E6F6;
+  background-color: #D3E6F6 !important;
+}
+
+.wc-text.hovering {
+  background-color: #E4F2FF;
 }
 
 .wc-title {
