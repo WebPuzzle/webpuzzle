@@ -1,6 +1,6 @@
 <div class="wc" ng-mouseover="wcCtrl.hovering = true" ng-mouseleave="wcCtrl.hovering = false">
   <div class="wc-image-container">
-      <a ng-if="wcCtrl.wcClickable" href='#/app/list/detail/{{wcCtrl.wc.id}}' ng-click="wcCtrl.selectWC(wcCtrl.wc)">
+      <a ng-if="wcCtrl.wcClickable" href='#!/app/list/detail/{{wcCtrl.wc.id}}' ng-click="wcCtrl.selectWC(wcCtrl.wc)">
           <img ng-src="{{wcCtrl.wc.imageLink}}" class="wc-image"/>
       </a>
       <a ng-if="!wcCtrl.wcClickable">
@@ -9,7 +9,7 @@
   </div>
   <div class="wc-text">
   
-      <a ng-if="wcCtrl.wcClickable" href='#/app/list/detail/{{wcCtrl.wc.id}}' ng-click="wcCtrl.selectWC(wcCtrl.wc)">
+      <a ng-if="wcCtrl.wcClickable" href='#!/app/list/detail/{{wcCtrl.wc.id}}' ng-click="wcCtrl.selectWC(wcCtrl.wc)">
           <h3 class="wc-title" ng-class="{'hovering':wcCtrl.hovering}">
               {{wcCtrl.wc.name}}
           </h3>
@@ -19,7 +19,7 @@
                 {{wcCtrl.wc.name}}
             </h3>
         </a>
-      <a ng-if="wcCtrl.wcClickable" href='#/app/list/detail/{{wcCtrl.wc.id}}' ng-click="wcCtrl.selectWC(wcCtrl.wc)">
+      <a ng-if="wcCtrl.wcClickable" href='#!/app/list/detail/{{wcCtrl.wc.id}}' ng-click="wcCtrl.selectWC(wcCtrl.wc)">
           <p class="wc-description" ng-class="{'hovering':wcCtrl.hovering}">
               {{wcCtrl.wc.description}}
           </p>
