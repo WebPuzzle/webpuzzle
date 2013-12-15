@@ -19,10 +19,8 @@ class ListCtrl {
   
   var bool = true;
 
-  ListCtrl(Router this.router, Http this._http, Scope this.scope){
-    _http(method: 'GET', url: 'webcomponents.json').then((HttpResponse data) {
-      webcomponents = data.data;
-    });
+  ListCtrl(Router this.router, WebComponentService wcService, Scope this.scope){
+    wcService.dataInitialized().then((data) => webcomponents = data);
     viewMode = router.activePath.last.name;
     router.onRouteStart.listen((RouteStartEvent rse) {
       rse.completed.then((bool){

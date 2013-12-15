@@ -3,6 +3,7 @@ library webpuzzle;
 import 'package:angular/angular.dart';
 import 'package:angular/routing/module.dart';
 import 'package:logging/logging.dart';
+import 'dart:async';
 
 part 'web_puzzle_route_initializer.dart';
 
@@ -12,7 +13,7 @@ part 'views/detail_ctrl.dart';
 part 'views/create/create_github_ctrl.dart';
 part 'views/create/create_additional_info_ctrl.dart';
 part 'components/webcomponent_component.dart';
-part 'services/selected_wc.dart';
+part 'services/webcomponent_service.dart';
 
 class WebPuzzleApp extends Module {
   WebPuzzleApp(){
@@ -20,7 +21,7 @@ class WebPuzzleApp extends Module {
     type(AppCtrl);
     type(DetailCtrl);
     type(WebcomponentComponent);
-    type(SelectedWCService);
+    type(WebComponentService);
     type(CreateGithubCtrl);
     type(CreateAdditionalInfoCtrl);
 

@@ -7374,6 +7374,12 @@ body {
   overflow: hidden;
 }
 
+#detail-backtolist {
+  position: relative;
+  top: -10px;
+  left: 15px;
+}
+
 @media only screen and (min-width: 768px) {
   #list-sorting-selector {
     position: absolute;
@@ -7502,6 +7508,14 @@ body {
   padding-left: 10px;
   height: 120px;
   overflow: hidden;
+}
+
+.wc-text-selected {
+  background-color: #D3E6F6 !important;
+}
+
+.wc-text.hovering {
+  background-color: #E4F2FF;
 }
 
 .wc-title {

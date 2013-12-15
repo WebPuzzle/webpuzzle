@@ -6,19 +6,19 @@ part of webpuzzle;
 )
 class DetailCtrl {
 
-  var currentId;
-  var selectedWCService;
+  int currentId;
+  WebComponentService wcService;
   var selectedWC;
   
-  DetailCtrl (RouteProvider routeProvider , SelectedWCService this.selectedWCService, Http http){
-    selectedWC = selectedWCService.selectedWC;
-    currentId = routeProvider.parameters["id"];
+  DetailCtrl (RouteProvider routeProvider , WebComponentService this.wcService, Http http){
+    selectedWC = wcService.selectedWC;
+    currentId = int.parse(routeProvider.parameters["id"]);
     if (selectedWC == null){
-      http.get('http://webpuzzlews.herokuapp.com/web_components/$currentId.json').then((HttpResponse response) {
-      selectedWCService.selectedWC = response.data;
-      selectedWC = response.data;
+      wcService.dataInitialized().then((dynamic) {
+      wcService.selectCurrentWebComponentFromId(currentId);
+      selectedWC = wcService.selectedWC;
       setUpDemo(selectedWC);
-      print("No selectedWC in memory, got data from WS");
+      print("No selectedWC in memory, using url parameter 'id'");
     });
     }else {
       setUpDemo(selectedWC);
