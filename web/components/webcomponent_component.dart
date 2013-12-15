@@ -16,7 +16,7 @@ class WebcomponentComponent {
   
   var hovering = false;
 
-  WebcomponentComponent(SelectedWC selectedWC){
+  WebcomponentComponent(SelectedWCService selectedWC){
     this.selectedWC = selectedWC;
   }
   

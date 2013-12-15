@@ -20,7 +20,7 @@ class WebPuzzleApp extends Module {
     type(AppCtrl);
     type(DetailCtrl);
     type(WebcomponentComponent);
-    type(SelectedWC);
+    type(SelectedWCService);
     type(CreateGithubCtrl);
     type(CreateAdditionalInfoCtrl);
 

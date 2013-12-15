@@ -1,11 +1,11 @@
 part of webpuzzle;
 
 @NgInjectableService()
-class SelectedWC {
+class SelectedWCService {
   
-  var selectedWC = {};
+  var selectedWC;
   
-  SelectedWC(){
+  SelectedWCService(){
     
   }
 }
