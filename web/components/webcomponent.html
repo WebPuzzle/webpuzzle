@@ -7,7 +7,7 @@
           <img ng-src="{{wcCtrl.wc.imageLink}}" class="wc-image"/>
       </a>
   </div>
-  <div class="wc-text">
+  <div class="wc-text" ng-class="{'wc-text-selected':wcCtrl.wc.selected}">
   
       <a ng-if="wcCtrl.wcClickable" href='#!/app/list/detail/{{wcCtrl.wc.id}}' ng-click="wcCtrl.selectWC(wcCtrl.wc)">
           <h3 class="wc-title" ng-class="{'hovering':wcCtrl.hovering}">

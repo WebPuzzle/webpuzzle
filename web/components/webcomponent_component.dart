@@ -9,19 +9,19 @@ part of webpuzzle;
 class WebcomponentComponent {
   @NgTwoWay("wcmodel")
   var wc;
-  var selectedWC;
+  
+  var wcService;
   
   @NgTwoWay("clickable")
   var wcClickable = true;
   
   var hovering = false;
 
-  WebcomponentComponent(SelectedWCService selectedWC){
-    this.selectedWC = selectedWC;
+  WebcomponentComponent(WebComponentService wcService){
+    this.wcService = wcService;
   }
   
   void selectWC(wc) {
-    print("this will select a $wc");
-    selectedWC.selectedWC = wc;
+    wcService.selectCurrentWebComponent(wc);
   }
 }
