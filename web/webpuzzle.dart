@@ -5,6 +5,7 @@ import 'package:angular/routing/module.dart';
 import 'package:logging/logging.dart';
 import 'dart:async';
 import 'dart:html';
+import 'dart:convert';
 
 part 'web_puzzle_route_initializer.dart';
 
@@ -18,6 +19,7 @@ part 'services/selected_wc.dart';
 part 'services/github_service.dart';
 part 'services/ws_url.dart';
 part 'services/user_service.dart';
+part 'views/auth_token_ctrl.dart';
 
 class WebPuzzleApp extends Module {
   WebPuzzleApp(){
@@ -28,6 +30,9 @@ class WebPuzzleApp extends Module {
     type(SelectedWCService);
     type(CreateGithubCtrl);
     type(CreateAdditionalInfoCtrl);
+    type(UserService);
+    type(WsUrl);
+    type(AuthTokenCtrl);
 
     type(RouteInitializer, implementedBy: WebPuzzleRouteInitializer);
     factory(NgRoutingUsePushState, (_) => new NgRoutingUsePushState.value(false));

@@ -39,7 +39,7 @@ class WebPuzzleRouteInitializer implements RouteInitializer {
             ..addRoute(
               name: 'authToken',
               path: '/auth/:provider/end/:finalToken',
-              enter: view('view/authToken.html')
+              enter: view('views/authToken.html')
             )
        );
   }

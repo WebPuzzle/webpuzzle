@@ -3,16 +3,21 @@ part of webpuzzle;
 @NgInjectableService()
 class UserService {
   
-  Window window;
   Http _http;
   WsUrl _wsUrl;
+  var user;
   
   UserService(Http this._http, WsUrl this._wsUrl) {
-    
+    updateUserInfo();
   }
   
   String getUserInfo() {
     return window.localStorage['github-user-info'];
+  }
+  
+  void updateUserInfo() {
+    if (isConnected())
+      user = JSON.decode(getUserInfo());
   }
   
   void setUserInfo(info) {
@@ -28,7 +33,7 @@ class UserService {
   }
   
   Future<HttpResponse> checkToken(token) {
-    return _http(method: 'GET', url:'$_wsUrl.webServiceUrl');
+    return _http(method: 'GET', url:'${_wsUrl.webServiceUrl}/auth/github/check', params: {'access_token': token});
   }
   
   void signIn(info) {
@@ -40,7 +45,7 @@ class UserService {
   }
   
   bool isConnected() {
-    if(getUserInfo().isEmpty) return false;
+    if(getUserInfo() == null) return false;
     else return true;
   }
   
