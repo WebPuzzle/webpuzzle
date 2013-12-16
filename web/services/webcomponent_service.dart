@@ -30,4 +30,10 @@ class WebComponentService {
   void selectCurrentWebComponentFromId(int id){
     selectCurrentWebComponent(webcomponents.firstWhere((wc) => wc['id'] == id));
   }
+  
+  void deselectCurrentWebComponent(){
+    webcomponents.forEach((wc){
+      if (wc['selected'] == true) wc['selected'] = false;
+    });
+  }
 }

@@ -34,6 +34,13 @@ class WebPuzzleRouteInitializer implements RouteInitializer {
                     name: 'additionalInfo', 
                     path: '/additionalInfo', 
                     enter: view('views/create/additionalInfo.html')
-       )));
+                )
+            )
+            ..addRoute(
+              name: 'authToken',
+              path: '/auth/:provider/end/:finalToken',
+              enter: view('views/authToken.html')
+            )
+       );
   }
 }
