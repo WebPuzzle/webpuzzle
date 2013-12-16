@@ -20,6 +20,8 @@ part 'services/github_service.dart';
 part 'services/ws_url.dart';
 part 'services/user_service.dart';
 part 'views/auth_token_ctrl.dart';
+part 'services/webcomponent_service.dart';
+
 
 class WebPuzzleApp extends Module {
   WebPuzzleApp(){
@@ -27,7 +29,7 @@ class WebPuzzleApp extends Module {
     type(AppCtrl);
     type(DetailCtrl);
     type(WebcomponentComponent);
-    type(SelectedWCService);
+    type(WebComponentService);
     type(CreateGithubCtrl);
     type(CreateAdditionalInfoCtrl);
     type(UserService);
