@@ -1,7 +1,7 @@
 part of webpuzzle;
 
 @NgDirective (
-  selector: '[wp-navbar-collapse]'    
+  selector: '.navbar[role=navigation]'    
  )
 class WpNavbarCollapse {
   
@@ -10,6 +10,8 @@ class WpNavbarCollapse {
   
   WpNavbarCollapse(Element this.element) {
     navbarCollapse = element.querySelector('.navbar-collapse');
+    
+    print("navbar = ${element}");
     
     document.onClick.listen((e) {
      navbarCollapse.style.display = 'none';

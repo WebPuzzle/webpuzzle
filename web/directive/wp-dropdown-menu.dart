@@ -1,7 +1,7 @@
 part of webpuzzle;
 
 @NgDirective (
-  selector: '[wp-dropdown-menu]'    
+  selector: '.dropdown-toggle'    
  )
 class WpDropdownMenu {
   
@@ -10,7 +10,10 @@ class WpDropdownMenu {
   
   WpDropdownMenu(Element this.element) {
     
+    element.style.cursor = 'pointer';
     dropdownMenu = element.querySelector('.dropdown-menu');
+    
+    print("dropdown-menu = ${dropdownMenu}");
     
     document.onClick.listen((e) {
      dropdownMenu.style.display = 'none';
