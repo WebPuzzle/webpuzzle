@@ -1,5 +1,5 @@
-name: talk_to_me
-description: A sample web application built using AngularDart
+name: webpuzzle
+description: A central place for your Web Components
 dependencies:
   browser: ">=0.8.10"
   angular: ">=0.9.2 <2.0.0"
