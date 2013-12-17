@@ -20,6 +20,8 @@ part 'services/ws_url.dart';
 part 'services/user_service.dart';
 part 'views/auth_token_ctrl.dart';
 part 'services/webcomponent_service.dart';
+part 'directive/wp-dropdown-menu.dart';
+part 'directive/wp-navbar-collapse.dart';
 
 
 class WebPuzzleApp extends Module {
@@ -34,6 +36,8 @@ class WebPuzzleApp extends Module {
     type(UserService);
     type(WsUrl);
     type(AuthTokenCtrl);
+    type(WpDropdownMenu);
+    type(WpNavbarCollapse);
 
     type(RouteInitializer, implementedBy: WebPuzzleRouteInitializer);
     factory(NgRoutingUsePushState, (_) => new NgRoutingUsePushState.value(false));
