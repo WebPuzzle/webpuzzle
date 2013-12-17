@@ -1,45 +1,45 @@
-<div class="wc" ng-mouseover="wcCtrl.hovering = true" ng-mouseleave="wcCtrl.hovering = false">
+<div class="wc" ng-mouseover="wcCtrl.hovering = true"
+  ng-mouseleave="wcCtrl.hovering = false">
   <div class="wc-image-container">
-      <a ng-if="wcCtrl.wcClickable" href='#!/app/list/detail/{{wcCtrl.wc.id}}' ng-click="wcCtrl.selectWC(wcCtrl.wc)">
-          <img ng-src="{{wcCtrl.wc.imageLink}}" class="wc-image"/>
-      </a>
-      <a ng-if="!wcCtrl.wcClickable">
-          <img ng-src="{{wcCtrl.wc.imageLink}}" class="wc-image"/>
-      </a>
+    <a ng-if="wcCtrl.wcClickable"
+      href='#!/app/list/detail/{{wcCtrl.wc.id}}'
+      ng-click="wcCtrl.selectWC(wcCtrl.wc)"> <img
+      ng-src="{{wcCtrl.wc.imageLink}}" class="wc-image" />
+    </a> <a ng-if="!wcCtrl.wcClickable"> <img
+      ng-src="{{wcCtrl.wc.imageLink}}" class="wc-image" />
+    </a>
   </div>
-  <div class="wc-text" ng-class="{'hovering':wcCtrl.hovering,'wc-text-selected':wcCtrl.wc.selected}">
-  
-      <a ng-if="wcCtrl.wcClickable" href='#!/app/list/detail/{{wcCtrl.wc.id}}' ng-click="wcCtrl.selectWC(wcCtrl.wc)">
-          <h3 class="wc-title" ng-class="{'hovering':wcCtrl.hovering}">
-              {{wcCtrl.wc.name}}
-          </h3>
-      </a>
-      <a ng-if="!wcCtrl.wcClickable">
-            <h3 class="wc-title" ng-class="{'hovering':wcCtrl.hovering}">
-                {{wcCtrl.wc.name}}
-            </h3>
-        </a>
-      <a ng-if="wcCtrl.wcClickable" href='#!/app/list/detail/{{wcCtrl.wc.id}}' ng-click="wcCtrl.selectWC(wcCtrl.wc)">
-          <p class="wc-description" ng-class="{'hovering':wcCtrl.hovering}">
-              {{wcCtrl.wc.description}}
-          </p>
-      </a>
-      <a ng-if="!wcCtrl.wcClickable">
-            <p class="wc-description" ng-class="{'hovering':wcCtrl.hovering}">
-                {{wcCtrl.wc.description}}
-            </p>
-        </a>
+  <div class="wc-text"
+    ng-class="{'hovering':wcCtrl.hovering,'wc-text-selected':wcCtrl.wc.selected}">
+    <a ng-if="wcCtrl.wcClickable"
+      href='#!/app/list/detail/{{wcCtrl.wc.id}}'
+      ng-click="wcCtrl.selectWC(wcCtrl.wc)">
+      <h3 class="wc-title" ng-class="{'hovering':wcCtrl.hovering}">
+        {{wcCtrl.wc.name}}</h3>
+    </a> <a ng-if="!wcCtrl.wcClickable">
+      <h3 class="wc-title" ng-class="{'hovering':wcCtrl.hovering}">
+        {{wcCtrl.wc.name}}</h3>
+    </a> <a ng-if="wcCtrl.wcClickable"
+      href='#!/app/list/detail/{{wcCtrl.wc.id}}'
+      ng-click="wcCtrl.selectWC(wcCtrl.wc)">
+      <p class="wc-description" ng-class="{'hovering':wcCtrl.hovering}">
+        {{wcCtrl.wc.description}}</p>
+    </a> <a ng-if="!wcCtrl.wcClickable">
+      <p class="wc-description" ng-class="{'hovering':wcCtrl.hovering}">
+        {{wcCtrl.wc.description}}</p>
+    </a>
   </div>
-  <a href="{{(wcCtrl.wcClickable)? wcCtrl.wc.githubLink : ''}}" target="_blank">
-      <div class="fa fa-github fa-2x icon-github">
-          <div class="github-tooltip" title="GitHub repo">
-          </div>
+  <a href="{{(wcCtrl.wcClickable)? wcCtrl.wc.githubLink : ''}}"
+    target="_blank">
+    <div class="fa fa-github fa-2x icon-github">
+      <div class="github-tooltip" title="GitHub repo"></div>
+    </div>
+  </a> <a
+    href="{{(wcCtrl.wcClickable)? wcCtrl.wc.githubLink + '/archive/master.zip' : ''}}"
+    target="_blank">
+    <div class="fa fa-download fa-2x icon-download">
+      <div class="github-tooltip" title="Download from Github Master">
       </div>
-  </a>
-  <a href="{{(wcCtrl.wcClickable)? wcCtrl.wc.githubLink + '/archive/master.zip' : ''}}" target="_blank">
-      <div class="fa fa-download fa-2x icon-download">
-          <div class="github-tooltip" title="Download from Github Master">
-          </div>
-      </div>
+    </div>
   </a>
 </div>
