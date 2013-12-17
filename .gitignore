@@ -1,6 +1,7 @@
 .idea
 packages
 /web/webpuzzle.dart.js.map
+/web/webpuzzle.dart.js
 !build/packages/
 node_modules/
 .DS_Store
