@@ -7380,6 +7380,10 @@ body {
   left: 15px;
 }
 
+.detail-tabs {
+  margin-top: 20px;
+}
+
 @media only screen and (min-width: 768px) {
   #list-sorting-selector {
     position: absolute;
