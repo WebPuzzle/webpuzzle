@@ -10,12 +10,9 @@ class WpTab {
   List<Element> contents;
   
   WpTab(Element this.element) {
-    print("tab = ${element}");
     tabs = element.querySelectorAll("ul li");
     contents = element.querySelectorAll(".tab-pane");
     List<Element> links = element.querySelectorAll("ul li a");
-    print(tabs);
-    print(contents);
     tabs.forEach((tab)=> tab.onClick.listen((e) => onTabClick(tab)));
   }
   
