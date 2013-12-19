@@ -15,6 +15,7 @@ part 'views/detail_ctrl.dart';
 part 'views/create/create_github_ctrl.dart';
 part 'views/create/create_additional_info_ctrl.dart';
 part 'components/webcomponent_component.dart';
+part 'components/world-picker_component.dart';
 part 'services/github_service.dart';
 part 'services/ws_url.dart';
 part 'services/user_service.dart';
@@ -22,6 +23,8 @@ part 'views/auth_token_ctrl.dart';
 part 'services/webcomponent_service.dart';
 part 'directive/wp-dropdown-menu.dart';
 part 'directive/wp-navbar-collapse.dart';
+part 'services/world_service.dart';
+part 'views/worlds_ctrl.dart';
 
 
 class WebPuzzleApp extends Module {
@@ -38,6 +41,9 @@ class WebPuzzleApp extends Module {
     type(AuthTokenCtrl);
     type(WpDropdownMenu);
     type(WpNavbarCollapse);
+    type(WorldService);
+    type(WorldsCtrl);
+    type(WorldPickerComponent);
 
     type(RouteInitializer, implementedBy: WebPuzzleRouteInitializer);
     factory(NgRoutingUsePushState, (_) => new NgRoutingUsePushState.value(false));

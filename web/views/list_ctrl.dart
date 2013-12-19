@@ -4,7 +4,7 @@ part of webpuzzle;
     selector: '[list-ctrl]',
     publishAs: 'listCtrl'
 )
-class ListCtrl {
+class ListCtrl implements NgDetachAware {
   Router router;
   Http _http;
   Scope scope;
@@ -17,10 +17,15 @@ class ListCtrl {
   var viewMode;
   var filterObject = {'name': '', 'submitter': ''};
   
+  WebComponentService _wcService;
+  WorldService _worldService;
+  
   var bool = true;
 
-  ListCtrl(Router this.router, WebComponentService wcService, Scope this.scope){
-    wcService.dataInitialized().then((data) => webcomponents = data);
+  ListCtrl(Router this.router, Scope this.scope, WebComponentService this._wcService, WorldService this._worldService){
+    _worldService.onChangeWorld(loadData);
+    loadData();
+    print("Coucou de listctrl");
     viewMode = router.activePath.last.name;
     router.onRouteStart.listen((RouteStartEvent rse) {
       rse.completed.then((bool){
@@ -74,6 +79,15 @@ class ListCtrl {
      'selected': false
    }
    ];
+  }
+  
+  detach() {
+    _worldService.removeOnChangeWorldCallback(loadData);
+  }
+  
+  loadData() {
+    print("LOAD DATA");
+    _wcService.load().then((data) => webcomponents = data);
   }
   
   selectSortingType(sortingType){
