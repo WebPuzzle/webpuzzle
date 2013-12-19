@@ -25,6 +25,7 @@ part 'views/auth_token_ctrl.dart';
 part 'services/webcomponent_service.dart';
 part 'directive/wp-dropdown-menu.dart';
 part 'directive/wp-navbar-collapse.dart';
+part 'directive/wp-tab.dart';
 part 'components/readme_component.dart';
 
 class WebPuzzleApp extends Module {
@@ -42,6 +43,7 @@ class WebPuzzleApp extends Module {
     type(WebcomponentComponent);
     type(WpDropdownMenu);
     type(WpNavbarCollapse);
+    type(WpTab);
     
     //services
     type(UserService);
