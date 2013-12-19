@@ -26,7 +26,7 @@ class DetailCtrl {
   }  
 
   setUpDemo(selectedWC){
-    selectedWC['demoLink'] = 'http://codepen.io/bradleybossard/pen/KoyAa';
+    //selectedWC['demoLink'] = 'http://codepen.io/bradleybossard/pen/KoyAa';
     //selectedWC['demoLink'] = 'http://jsfiddle.net/jgoemat/kta95/';
     _extractDemoType(selectedWC['demoLink']);
     if (selectedWC['demoType'] == 'codepen'){
@@ -40,14 +40,16 @@ class DetailCtrl {
   _extractDemoType(demoLink){
     var regExpIsJsFiddle = new RegExp(r'/.*jsfiddle.*/');
     var regExpIsCodePen = new RegExp(r'/.*codepen.*/');
-    if (regExpIsCodePen.hasMatch(demoLink)){
+    if (demoLink == null){
+      selectedWC['demoType '] = 'none';
+    } else if (regExpIsCodePen.hasMatch(demoLink)){
       selectedWC['demoType'] = 'codepen';
     } else if (regExpIsJsFiddle.hasMatch(demoLink)){
       selectedWC['demoType'] = 'jsfiddle';
     } else {
       selectedWC['demoType '] = 'none';
     }
-    print("extracted demoType : " + selectedWC['demoType']);
+    print("extracted demoType : ${selectedWC['demoType']}");
   }
 
   
