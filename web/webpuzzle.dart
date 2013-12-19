@@ -6,6 +6,9 @@ import 'package:logging/logging.dart';
 import 'dart:async';
 import 'dart:html';
 import 'dart:convert';
+import 'package:crypto/crypto.dart';
+import 'package:utf/utf.dart';
+import 'package:markdown/markdown.dart' as markdown;
 
 part 'web_puzzle_route_initializer.dart';
 
@@ -22,23 +25,30 @@ part 'views/auth_token_ctrl.dart';
 part 'services/webcomponent_service.dart';
 part 'directive/wp-dropdown-menu.dart';
 part 'directive/wp-navbar-collapse.dart';
-
+part 'components/readme_component.dart';
 
 class WebPuzzleApp extends Module {
   WebPuzzleApp(){
+    //controllers
     type(ListCtrl);
     type(AppCtrl);
     type(DetailCtrl);
-    type(WebcomponentComponent);
-    type(WebComponentService);
     type(CreateGithubCtrl);
     type(CreateAdditionalInfoCtrl);
-    type(UserService);
-    type(WsUrl);
     type(AuthTokenCtrl);
+    
+    //components
+    type(ReadmeComponent);
+    type(WebcomponentComponent);
     type(WpDropdownMenu);
     type(WpNavbarCollapse);
-
+    
+    //services
+    type(UserService);
+    type(WsUrl);
+    type(WebComponentService);
+    type(GithubService);
+    
     type(RouteInitializer, implementedBy: WebPuzzleRouteInitializer);
     factory(NgRoutingUsePushState, (_) => new NgRoutingUsePushState.value(false));
   }
