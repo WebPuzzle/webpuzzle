@@ -85,9 +85,9 @@ class ListCtrl implements NgDetachAware {
     _worldService.removeOnChangeWorldCallback(loadData);
   }
   
-  loadData() {
+  Future loadData() {
     print("LOAD DATA");
-    _wcService.load().then((data) => webcomponents = data);
+    return _wcService.load().then((data) => webcomponents = data);
   }
   
   selectSortingType(sortingType){

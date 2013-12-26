@@ -1,17 +1,17 @@
 part of webpuzzle_spec;
 
-class TestWsUrl extends TestDouble implements WsUrl{ var webServiceUrl = "url";}
-class TestUserService extends TestDouble implements UserService{ var user = "user";}
-class TestWebComponentService extends TestDouble implements WebComponentService{}
+class WsUrlTestApp extends TestDouble implements WsUrl{ var webServiceUrl = "url";}
+class UserServiceTestApp extends TestDouble implements UserService{ var user = "user";}
+class WebComponentServiceTestApp extends TestDouble implements WebComponentService{}
 
 testAppCtrl(){
   group("[AppCtrl]", (){
     var wsUrl, userService, webComponentService;
 
     setUp((){
-      wsUrl = new TestWsUrl();
-      userService = new TestUserService();
-      webComponentService = new TestWebComponentService();
+      wsUrl = new WsUrlTestApp();
+      userService = new UserServiceTestApp();
+      webComponentService = new WebComponentServiceTestApp();
     }); 
 
     test("storing the call", (){

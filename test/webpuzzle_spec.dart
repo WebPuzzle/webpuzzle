@@ -11,7 +11,9 @@ import 'package:angular/routing/module.dart';
 import 'package:angular/mock/module.dart';
 
 part 'controllers/app_ctrl_spec.dart';
+part 'controllers/list_ctrl_spec.dart';
 
 main(){
-  testAppCtrl(); 
+  testAppCtrl();
+  testListCtrl();
 }
