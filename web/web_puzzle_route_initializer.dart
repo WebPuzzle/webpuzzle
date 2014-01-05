@@ -20,6 +20,7 @@ class WebPuzzleRouteInitializer implements RouteInitializer {
                       path: '/detail/:id', 
                       enter: view('views/detail.html')
                ))
+            ..addRoute(name: 'test', path: '/test', enter: view('views/test.html'))
             ..addRoute(
               name: 'create', 
               path: '/create', 

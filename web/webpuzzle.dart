@@ -26,7 +26,9 @@ part 'services/webcomponent_service.dart';
 part 'directive/wp-dropdown-menu.dart';
 part 'directive/wp-navbar-collapse.dart';
 part 'directive/wp-tab.dart';
+part 'directive/wp-on-change.dart';
 part 'components/readme_component.dart';
+part 'views/test_ctrl.dart';
 
 class WebPuzzleApp extends Module {
   WebPuzzleApp(){
@@ -44,13 +46,15 @@ class WebPuzzleApp extends Module {
     type(WpDropdownMenu);
     type(WpNavbarCollapse);
     type(WpTab);
+    type(WpOnChange);
     
     //services
     type(UserService);
     type(WsUrl);
     type(WebComponentService);
     type(GithubService);
-    
+    type(AuthTokenCtrl);
+    type(TestCtrl);
     type(RouteInitializer, implementedBy: WebPuzzleRouteInitializer);
     factory(NgRoutingUsePushState, (_) => new NgRoutingUsePushState.value(false));
   }
