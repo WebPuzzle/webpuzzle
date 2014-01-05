@@ -7,15 +7,22 @@ class WebComponentService {
   
   Future _whenDataIsLoaded;
   var _http;
+  var _wsUrl;
+  var _worldService;
   
-  WebComponentService(Http this._http){
-    _whenDataIsLoaded = _http(method: 'GET', url: 'webcomponents.json').then((HttpResponse response) {
-      webcomponents = response.data;
-      return webcomponents;
-    });
+  WebComponentService(Http this._http, WsUrl this._wsUrl, WorldService this._worldService){
+    load();
   }
   
   Future dataInitialized(){
+    return _whenDataIsLoaded;
+  }
+  
+  load() {
+    _whenDataIsLoaded = _http(method: 'GET', url: "${_wsUrl.webServiceUrl}/web_components/${_worldService.world}.json").then((HttpResponse response) {
+      webcomponents = response.data;
+      return webcomponents;
+    });
     return _whenDataIsLoaded;
   }
   

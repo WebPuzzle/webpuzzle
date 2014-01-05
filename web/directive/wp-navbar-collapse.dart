@@ -11,8 +11,6 @@ class WpNavbarCollapse {
   WpNavbarCollapse(Element this.element) {
     navbarCollapse = element.querySelector('.navbar-collapse');
     
-    print("navbar = ${element}");
-    
     document.onClick.listen((e) {
      navbarCollapse.style.display = 'none';
     });

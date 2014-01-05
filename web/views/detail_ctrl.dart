@@ -8,9 +8,10 @@ class DetailCtrl {
 
   int currentId;
   WebComponentService wcService;
+  WorldService worldService;
   var selectedWC;
   
-  DetailCtrl (RouteProvider routeProvider , WebComponentService this.wcService, Http http){
+  DetailCtrl (RouteProvider routeProvider , WebComponentService this.wcService, Http http, WorldService this.worldService){
     selectedWC = wcService.selectedWC;
     currentId = int.parse(routeProvider.parameters["id"]);
     if (selectedWC == null){
