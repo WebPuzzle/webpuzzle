@@ -11,13 +11,14 @@ class WebcomponentComponent {
   var wc;
   
   var wcService;
+  var worldService;
   
   @NgTwoWay("clickable")
   var wcClickable = true;
   
   var hovering = false;
 
-  WebcomponentComponent(WebComponentService wcService){
+  WebcomponentComponent(WebComponentService wcService, WorldService this.worldService){
     this.wcService = wcService;
   }
   
