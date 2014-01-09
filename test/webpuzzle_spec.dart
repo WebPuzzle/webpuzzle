@@ -1,6 +1,7 @@
 library webpuzzle_spec;
 
 import 'package:unittest/unittest.dart';
+import 'package:unittest/mock.dart';
 import 'package:dartmocks/dartmocks.dart';
 import 'dart:async';
 import 'dart:html' as html;
