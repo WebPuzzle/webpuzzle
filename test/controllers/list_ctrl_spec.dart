@@ -34,7 +34,8 @@ testListCtrl(){
       //name property exists in TestDouble class 
       router.when(callsTo("get activePath")).alwaysReturn(new List()
       ..add(new PathMock()..mock.when(callsTo("get name")).alwaysReturn("list")));
-      router.when(callsTo("get onRouteStart")).thenReturn(new Mock()..when(callsTo("listen")).thenReturn(null));
+      router.when(callsTo("get onRouteStart")).thenReturn(new Mock()
+      ..when(callsTo("listen")).thenReturn(null));
       
       webComponentService.when(callsTo("load")).alwaysReturn(new Future.value(
         [{

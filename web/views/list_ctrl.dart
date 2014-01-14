@@ -25,7 +25,6 @@ class ListCtrl implements NgDetachAware {
   ListCtrl(Router this.router, Scope this.scope, WebComponentService this._wcService, WorldService this._worldService){
     _worldService.onChangeWorld(loadData);
     loadData();
-    print("Coucou de listctrl");
     viewMode = router.activePath.last.name;
     router.onRouteStart.listen((RouteStartEvent rse) {
       rse.completed.then((bool){
@@ -86,7 +85,6 @@ class ListCtrl implements NgDetachAware {
   }
   //Gets data from webservice using wcService
   Future loadData() {
-    print("LOAD DATA");
     return _wcService.load().then((data) => webcomponents = data);
   }
   
