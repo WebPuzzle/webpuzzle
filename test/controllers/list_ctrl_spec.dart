@@ -69,14 +69,14 @@ testListCtrl(){
     
     test("should select sorting type", (){
       listCtrl.selectSortingType(listCtrl.sortingTypes.first);
-      expect(listCtrl.sortingTypes.first['selected'], equals(true));
-      expect(listCtrl.sortingTypes[1]['selected'], equals(false));
+      expect(listCtrl.sortingTypes.first['selected'], isTrue);
+      expect(listCtrl.sortingTypes[1]['selected'], isFalse);
     });
     
     test("should select filter type", (){
       listCtrl.selectFilterType(listCtrl.filterTypes.first);
-      expect(listCtrl.filterTypes.first['selected'], equals(true));
-      expect(listCtrl.filterTypes[1]['selected'], equals(false));
+      expect(listCtrl.filterTypes.first['selected'], isTrue);
+      expect(listCtrl.filterTypes[1]['selected'], isFalse);
     });
   });
   
