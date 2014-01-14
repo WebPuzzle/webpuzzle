@@ -84,12 +84,14 @@ class ListCtrl implements NgDetachAware {
   detach() {
     _worldService.removeOnChangeWorldCallback(loadData);
   }
-  
+  //Gets data from webservice using wcService
   Future loadData() {
     print("LOAD DATA");
     return _wcService.load().then((data) => webcomponents = data);
   }
   
+  //Sets the selected flags to true for a given sortingType object
+  //Resets all other flags to false
   selectSortingType(sortingType){
     sortingTypes.forEach((type) => type['selected'] = false);
     sortingType['selected'] = true;
@@ -97,6 +99,8 @@ class ListCtrl implements NgDetachAware {
 
   }
   
+  //Sets the selected flags to true for a given filterType object
+  //Resets all other flags to false
   selectFilterType(filter){
     filterTypes.forEach((type) => type['selected'] = false);
     filter['selected'] = true;
