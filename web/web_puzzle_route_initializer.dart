@@ -31,7 +31,7 @@ class WebPuzzleRouteInitializer implements RouteInitializer {
                             )
                               ..addRoute(
                                   name: 'additionalInfo', 
-                                  path: '/additionalInfo', 
+                                  path: '/additionalInfo/:user/:repo', 
                                   enter: view('views/create/additionalInfo.html')
                               )      
                          )
