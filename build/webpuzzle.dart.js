@@ -62559,7 +62559,6 @@ $is_wk:true},"+WorldService_triggerWorldChange_closure": [5084],iZ:{"":"a;oO@-",
 "@":function(){return[C.KuJ]},
 static:{BFs:function(){var z=new Q.iZ(null)
 z.oO="https://webpuzzlews.herokuapp.com"
-z.oO="http://localhost:3000"
 return z
 "2843"},"+new WsUrl:0:0":1}},"+WsUrl": [0],qN:{"":"a;Nw@-,l8@-,SV@-,ts@-,cv@-,b5@-,mL@-",
 jG:function(a,b,c,d,e,f,g){this.Nw=H.d(d.goO())+"/auth/github/send"
