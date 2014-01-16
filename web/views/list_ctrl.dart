@@ -85,7 +85,7 @@ class ListCtrl implements NgDetachAware {
   }
   
   loadData() {
-    _wcService.loadWc().then((data) => webcomponents = data);
+    return _wcService.loadWc().then((data) => webcomponents = data);
   }
   
   //Sets the selected flags to true for a given sortingType object

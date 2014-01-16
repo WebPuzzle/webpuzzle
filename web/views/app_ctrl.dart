@@ -15,7 +15,8 @@ class AppCtrl {
   Router _router;
 
 
-  AppCtrl (Scope scope,RouteProvider this._routeProvider, Router this._router, WsUrl ws_url, UserService this.userService, WebComponentService this.webComponentService, WorldService this._worldService){
+  AppCtrl (Scope scope, RouteProvider this._routeProvider, Router this._router, WsUrl ws_url, 
+      UserService this.userService, WebComponentService this.webComponentService, WorldService this._worldService){
     authentUrl = '${ws_url.webServiceUrl}/auth/github/send';
     user = userService.user;
     _worldService.world = _routeProvider.parameters["world"];
