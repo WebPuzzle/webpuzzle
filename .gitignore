@@ -6,3 +6,5 @@ packages
 node_modules/
 .DS_Store
 /web/webpuzzle.dart.js.deps
+
+/web/webpuzzle.dart.precompiled.js
