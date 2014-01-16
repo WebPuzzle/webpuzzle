@@ -1,7 +1,7 @@
 <ul class="nav navbar-nav">
   <li class="dropdown-toggle"><a>{{worldPickerCtrl.currentWorld}}</a>
     <ul class="dropdown-menu">
-      <li ng-repeat="world in worldPickerCtrl.worlds" ><a ng-click="worldPickerCtrl.worldService.world = world">{{world}}</a></li>
+      <li ng-repeat="world in worldPickerCtrl.worlds" ><a href="#!/app/{{world}}/list">{{world}}</a></li>
     </ul>
   </li>
 
