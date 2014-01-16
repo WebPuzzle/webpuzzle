@@ -11,33 +11,19 @@
                     <div class="row">
                         <div>
                             <div class="col-sm-12">
-                                <div class="form-group" 
-                                ng-class="{'has-error': (githubCtrl.overOnSubmitForm || githubCtrl.submitClick ) && githubLinkWCForm.githubLinkWC.$invalid }">
+                                <div class="form-group">
                                     <input class="form-control"
-                                           name="githubLinkWC" 
-                                           ng-model="githubCtrl.wc.githubLink" 
+                                           type="text" name="githubLinkWC" 
+                                           ng-model="githubLink" 
                                            placeholder="{{inputPlaceholder}}" 
                                            required github-repo-link />
-
-                                    <span style="position: absolute" 
-                                    ng-show="(githubCtrl.overOnSubmitForm || githubCtrl.submitClick) && githubLinkWCForm.githubLinkWC.$invalid" 
-                                    class="help-block">
-                                        a valid github link repo is required
-                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div style="text-align: center; margin-top: 50px" >
-                        <div style="display: inline-block" 
-                        ng-init="githubCtrl.overOnSubmitForm = false; githubCtrl.submitClick = false" 
-                        ng-mouseover="githubCtrl.overOnSubmitForm = true" 
-                        ng-mouseleave="githubCtrl.overOnSubmitForm = false" 
-                        ng-click="githubCtrl.submitClick = true">
-                            <button class="btn btn-default btn-lg"
-                                    ng-class="{'btn-danger': githubCtrl.overOnSubmitForm && githubLinkWCForm.$invalid}"
-                                    ng-disabled="githubLinkWCForm.$invalid"
-                                    ng-click="githubCtrl.submitForm(githubCtrl.wc.githubLink)">
+                        <div style="display: inline-block">
+                            <button class="btn btn-default btn-lg" ng-click="moveToAddInfos(githubLink)">
                                 Next
                             </button>
                         </div>
@@ -46,15 +32,12 @@
                 <div class="col-xs-1"><h2>Or</h2></div>
                 <div class="col-xs-5">
                     <h2>Choose one of your repository</h2>
-                    <div ng-mouseleave="githubCtrl.hoveringUserRepo = false" 
-                    ng-mouseover="githubCtrl.hoveringUserRepo = true" 
+                    <div
                     style="height: 210px; overflow: auto">
                         <div ng-repeat="repo in githubCtrl.userRepos">
-                            <p class="create-user-repo" 
-                            ng-mouseover="githubCtrl.changeInputPlaceholder(repo.html_url)" 
-                            ng-click="githubCtrl.goToAdditionalInfo(repo.owner.login, repo.name)">
-                                {{githubCtrl.repo.name}}
-                            </p>
+                            <a class="create-user-repo" href="#!/app/{{worldService.getNiceWorld()}}/create/additionalInfo/{{repo.full_name}}">
+                                {{repo.name}}
+                            </a>
                         </div>
                     </div>
                 </div>

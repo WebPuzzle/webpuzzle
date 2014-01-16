@@ -8,40 +8,37 @@
                 </p>
             </div>
         </div>
-        <div class="form-group" ng-class="{'has-error': (additionalInfoCtrl.overOnSubmitForm || additionalInfoCtrl.submitClick) && webComponentForm.nameWC.$invalid}">
+        <div class="form-group">
             <label for="nameWC" class="col-md-2 control-label">Name&nbsp;*</label>
             <div class="col-md-10">
-                <input type="text" ng-model="additionalInfoCtrl.wc.name" name="nameWC" class="form-control" id="nameWC" required placeholder="Your WC's name"/>
-                <span style="position: absolute" ng-show="(additionalInfoCtrl.overOnSubmitForm || additionalInfoCtrl.submitClick) && webComponentForm.nameWC.$invalid" class="help-block">A name is required</span>
+                <input type="text" ng-model="wc.name"  class="form-control" required placeholder="Your WC's name"/>
             </div>
 
         </div>
-        <div class="form-group" ng-class="{'has-error': (additionalInfoCtrl.overOnSubmitForm || additionalInfoCtrl.submitClick) && webComponentForm.descriptionWC.$invalid }">
+        <div class="form-group">
             <label for="descriptionWC" class="col-md-2 control-label">Description&nbsp;*</label>
             <div class="col-md-10">
-                <textarea ng-model="additionalInfoCtrl.wc.description" class="form-control" name="descriptionWC" id="descriptionWC" required placeholder="Your description" />
-                <span style="position: absolute" ng-show="(additionalInfoCtrl.overOnSubmitForm || additionalInfoCtrl.submitClick) && webComponentForm.descriptionWC.$invalid" class="help-block">A Description is required</span>
+                <textarea ng-model="wc.description" class="form-control" name="descriptionWC" id="descriptionWC" required placeholder="Your description"> </textarea>
             </div>
         </div>
         <div class="form-group">
             <label for="imageLinkWC" class="col-md-2 control-label">Image link</label>
             <div class="col-md-10">
-                <input type="text" ng-model="additionalInfoCtrl.wc.imageLink" class="form-control" id="imageLinkWC" placeholder="image link of your WC"/>
+                <input type="text" ng-model="wc.imageLink" class="form-control" id="imageLinkWC" placeholder="image link of your WC"/>
             </div>
         </div>
 
         <div class="form-group">
             <label for="demoLinkWC" class="col-md-2 control-label">Demo link</label>
             <div class="col-md-10">
-                <input type="text" ng-model="additionalInfoCtrl.wc.demoLink" class="form-control" id="demoLinkWC" placeholder="A link to a demo of your WC (jsFiddle or codePen)"/>
+                <input type="text" ng-model="wc.demoLink" class="form-control" id="demoLinkWC" placeholder="A link to a demo of your WC (jsFiddle or codePen)"/>
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10" >
-                <div ng-init="additionalInfoCtrl.overOnSubmitForm = false; submitClick = false" ng-mouseover="additionalInfoCtrl.overOnSubmitForm = true" ng-mouseleave="additionalInfoCtrl.overOnSubmitForm = false" ng-click="submitClick = true" style="display: inline-block">
-                    <button ng-click="additionalInfoCtrl.saveWC(wc)" ng-class="{'btn-danger': additionalInfoCtrl.overOnSubmitForm && additionalInfoCtrl.webComponentForm.$invalid}"
-                            ng-disabled="additionalInfoCtrl.webComponentForm.$invalid" class="btn btn-default">
+                <div style="display: inline-block">
+                    <button ng-click="saveWc(wc)" class="btn btn-default">
                         Register
                     </button>
                 </div>

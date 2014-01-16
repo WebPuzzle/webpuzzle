@@ -19,6 +19,7 @@ form textarea.form-control {
   color: #525252;
   margin-bottom: 0px;
   padding: 5px 30px;
+  display: block;
 }
 
 .create-user-repo:hover {
