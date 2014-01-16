@@ -22,7 +22,7 @@ testWorldService() {
     test("should initialize world_service with a world", () {
       html.window.localStorage['world'] = "angularjs";
       WorldService worldService = new WorldService(router, routeProvider);
-      expect(worldService.world, "AngularJsWx");
+      expect(worldService.world, "AngularJsWv");
     });
     
   });
