@@ -9,6 +9,8 @@ class WorldServiceTestList extends Mock implements WorldService{}
 class PathMock {
   Mock mock = new Mock();
   
+  String name;
+  
   noSuchMethod(Invocation invocation) {
     return mock.noSuchMethod(invocation);
   }
@@ -33,11 +35,11 @@ testListCtrl(){
       //setting name directly is a workaround because 
       //name property exists in TestDouble class 
       router.when(callsTo("get activePath")).alwaysReturn(new List()
-      ..add(new PathMock()..mock.when(callsTo("get name")).alwaysReturn("list")));
+      ..add(new PathMock()..name = "list"));
       router.when(callsTo("get onRouteStart")).thenReturn(new Mock()
       ..when(callsTo("listen")).thenReturn(null));
       
-      webComponentService.when(callsTo("load")).alwaysReturn(new Future.value(
+      webComponentService.when(callsTo("loadWc")).alwaysReturn(new Future.value(
         [{
            "author": null, "demoLink": null, "description": "I display awesome cats",
            "githubLink": "https://github.com/Benoit-Vasseur/WebPuzzle-Front", "id": 4,
@@ -57,7 +59,7 @@ testListCtrl(){
     test("should initialize controller", (){
       worldService.getLogs(callsTo("onChangeWorld")).verify(happenedOnce);
       scope.getLogs(callsTo(r"$watch")).verify(happenedExactly(2));
-      webComponentService.getLogs(callsTo("load")).verify(happenedOnce);
+      webComponentService.getLogs(callsTo("loadWc")).verify(happenedOnce);
       listCtrl.loadData().then((value){
         expect(listCtrl.webcomponents.length, equals(2));
       });

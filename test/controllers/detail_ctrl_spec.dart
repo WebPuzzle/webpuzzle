@@ -25,13 +25,17 @@ testDetailCtrl() {
     });
     
 
-//    test("should initialize without a selectedWC in WCService", (){
-//      webComponentService.when(callsTo("dataInitialized")).thenReturn(
-//          new Future.value("anything"));
-//      DetailCtrl detailCtrl = new DetailCtrl(routeProvider, webComponentService, worldService);
-//      expectAsync0(webComponentService.dataInitialized);
-//    }); 
-//    
+    test("should initialize without a selectedWC in WCService", (){
+      webComponentService.when(callsTo("dataInitialized")).thenReturn(new Future.value(null));
+      webComponentService.when(callsTo("selectCurrentWebComponentFromId"))
+        .thenCall((int id) => webComponentService.selectedWC = {"name" : "I am a fake wc"});
+      DetailCtrl detailCtrl = new DetailCtrl(routeProvider, webComponentService, worldService);
+      webComponentService.getLogs(callsTo("dataInitialized")).verify(happenedOnce);
+      detailCtrl.testControllerInitializedAsync.then((d){
+        expect(detailCtrl.selectedWC["name"], equals("I am a fake wc"));
+      });
+    });
+    
     test("should set up jsfiddle demo", (){
       webComponentService.selectedWC = {"demoLink" : "http://jsfiddle.net/jgoemat/kta95/"};
       DetailCtrl detailCtrl = new DetailCtrl(routeProvider, webComponentService, worldService);
