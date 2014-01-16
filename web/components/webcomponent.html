@@ -2,14 +2,14 @@
   ng-mouseleave="wcCtrl.hovering = false">
   <div class="wc-image-container">
     <a ng-if="wcCtrl.wcClickable"
-      href='#!/app/{{wcCtrl.worldService.world}}/list/detail/{{wcCtrl.wc.id}}'
+      href='#!/app/{{wcCtrl.worldService.getNiceWorld()}}/list/detail/{{wcCtrl.wc.id}}'
       ng-click="wcCtrl.selectWC(wcCtrl.wc)"> <img
       ng-src="{{wcCtrl.wc.imageLink}}" class="wc-image" />
     </a> <a ng-if="!wcCtrl.wcClickable"> <img
       ng-src="{{wcCtrl.wc.imageLink}}" class="wc-image" />
     </a>
   </div>
-  <a ng-if="wcCtrl.wcClickable" href="#!/app/{{wcCtrl.worldService.world}}/list/detail/{{wcCtrl.wc.id}}">
+  <a ng-if="wcCtrl.wcClickable" href="#!/app/{{wcCtrl.worldService.getNiceWorld()}}/list/detail/{{wcCtrl.wc.id}}">
     <div class="wc-text"
       ng-if="wcCtrl.wcClickable"
       ng-click="wcCtrl.selectWC(wcCtrl.wc)"

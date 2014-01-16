@@ -6,17 +6,29 @@ part of webpuzzle;
     publishAs: 'worldPickerCtrl',
     applyAuthorStyles: true
 )
-class WorldPickerComponent {
+class WorldPickerComponent implements NgDetachAware {
   
   WorldService worldService;
   String currentWorld;
   List<String> worlds;
   
-  WorldPickerComponent(WorldService this.worldService) {
-    currentWorld = worldService.world;
-    worlds = WorldService.NICE_WORLDS_LIST;
-    worlds.remove(currentWorld);
+  Router _router;
+  
+  WorldPickerComponent(WorldService this.worldService, Router this._router) {
+    createMenu();
+    worldService.onChangeWorld(createMenu);
+    
+  }
+  
+  void createMenu() {
+    currentWorld = worldService.getNiceWorld();
+    worlds = new List.from(WorldService.NICE_WORLDS_LIST);
+    worlds.remove(currentWorld);   
     print("WORLDS $worlds");
   }
   
+  detach() {
+    worldService.removeOnChangeWorldCallback(createMenu);
+  }
+   
 }

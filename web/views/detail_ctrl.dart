@@ -7,34 +7,42 @@ part of webpuzzle;
 class DetailCtrl {
 
   int currentId;
-  WebComponentService wcService;
+  WebComponentService webComponentService;
   WorldService worldService;
   var selectedWC;
   
-  DetailCtrl (RouteProvider routeProvider , WebComponentService this.wcService, Http http, WorldService this.worldService){
-    selectedWC = wcService.selectedWC;
+  //used in unit test
+  Future testControllerInitializedAsync;
+  
+  //initialize selected web component and setsUp demo data
+  DetailCtrl (RouteProvider routeProvider , WebComponentService this.webComponentService, WorldService this.worldService){
+    selectedWC = webComponentService.selectedWC;
     currentId = int.parse(routeProvider.parameters["id"]);
+    print("selectedWC : $selectedWC");
     if (selectedWC == null){
-      wcService.dataInitialized().then((dynamic) {
-      wcService.selectCurrentWebComponentFromId(currentId);
-      selectedWC = wcService.selectedWC;
-      setUpDemo(selectedWC);
-      print("No selectedWC in memory, using url parameter 'id'");
-    });
+      testControllerInitializedAsync = webComponentService.dataInitialized().then((dynamic) {
+        webComponentService.selectCurrentWebComponentFromId(currentId);
+        selectedWC = webComponentService.selectedWC;
+        setUpDemo(selectedWC);
+        print("No selectedWC in memory, using url parameter 'id'");
+      });
     }else {
       setUpDemo(selectedWC);
     }
-  }  
+  }
 
-  setUpDemo(selectedWC){
-    //selectedWC['demoLink'] = 'http://codepen.io/bradleybossard/pen/KoyAa';
-    //selectedWC['demoLink'] = 'http://jsfiddle.net/jgoemat/kta95/';
-    _extractDemoType(selectedWC['demoLink']);
-    if (selectedWC['demoType'] == 'codepen'){
-      _setUpCodePenData(selectedWC['demoLink']);
-    }
-    if (selectedWC['demoType'] == 'jsfiddle'){
-      _setUpJsFiddleData(selectedWC['demoLink']);
+  //sets up demo data based on web component's demoLink
+  setUpDemo(selectedWC){    
+    if (selectedWC != null){
+      _extractDemoType(selectedWC['demoLink']);
+      if (selectedWC['demoType'] == 'codepen'){
+        _setUpCodePenData(selectedWC['demoLink']);
+      }
+      if (selectedWC['demoType'] == 'jsfiddle'){
+        _setUpJsFiddleData(selectedWC['demoLink']);
+      }
+    }else {
+      print("cannot setUpDemo, selectedWC is null");
     }
   }
 
@@ -53,7 +61,6 @@ class DetailCtrl {
     print("extracted demoType : ${selectedWC['demoType']}");
   }
 
-  
   _setUpJsFiddleData(demoLink){
     selectedWC['demoLinkUrl'] = demoLink + 'embedded/result,js,html,css/';
     print('demoLinkUrl = ' + selectedWC['demoLinkUrl']);

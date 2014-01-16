@@ -7,16 +7,23 @@ class GithubService {
   
   RegExp _regExp = new RegExp(r'https://github\.com/(.*)/(.*)');
   Http _http;
+  UserService _userService;
   
-  GithubService(Http this._http);
+  GithubService(Http this._http, UserService this._userService);
   
   Future<HttpResponse> checkRepo(String user, String repo) {
     return _http(method: 'GET', url:'$githubApi/repos/$user/$repo');
   }
   
+  Future<HttpResponse> getUserRepos() {
+    return _http(method: 'GET', url:'https://api.github.com/user/repos?access_token=${_userService.getToken()}').then((HttpResponse response) {
+      return response.data;
+    });
+  }
+  
   Future<HttpResponse> getReadmeRaw(String repositoryUrl){
-    String user = _getUserFromRepoUrl(repositoryUrl);
-    String repoName = _getRepoNameFromRepoUrl(repositoryUrl);
+    String user = getUserFromRepoUrl(repositoryUrl);
+    String repoName = getRepoNameFromRepoUrl(repositoryUrl);
     if (user == null || repoName==null)
       return new Future(() => null);
     return _http(method: 'GET', url:'$githubApi/repos/$user/$repoName/readme').then((HttpResponse response){
@@ -28,7 +35,7 @@ class GithubService {
       });
   }
   
-  String _getUserFromRepoUrl(String repositoryUrl){
+  String getUserFromRepoUrl(String repositoryUrl){
     print(repositoryUrl);
     if (!_regExp.hasMatch(repositoryUrl))
       return null;
@@ -36,7 +43,7 @@ class GithubService {
     return matches.first.group(1);
   }
   
-  String _getRepoNameFromRepoUrl(String repositoryUrl){
+  String getRepoNameFromRepoUrl(String repositoryUrl){
     if (!_regExp.hasMatch(repositoryUrl))
       return null;
     Iterable<Match> matches = _regExp.allMatches(repositoryUrl);
