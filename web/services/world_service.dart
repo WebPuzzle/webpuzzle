@@ -21,16 +21,19 @@ class WorldService {
       case 'jquery': _world = 'JqueryWc'; break;
       default : _router.gotoUrl('/worlds');
     }
+    window.localStorage['world'] = world;
     triggerWorldChange();
   }
   
   get world {
+    if(!WORLDS_LIST.contains(_world) && window.localStorage['world'] !=null) {
+      world = window.localStorage['world'];
+    }
     return _world;
   }
   
   WorldService(Router this._router, RouteProvider this._routeProvider) {
     _onChangeWorldCallbacks = new List();
-    
   }    
   
 // regexp to obtain the world
