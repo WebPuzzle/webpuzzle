@@ -11,12 +11,16 @@ class DetailCtrl {
   WorldService worldService;
   var selectedWC;
   
+  //used in unit test
+  Future testControllerInitializedAsync;
+  
+  //initialize selected web component and setsUp demo data
   DetailCtrl (RouteProvider routeProvider , WebComponentService this.webComponentService, WorldService this.worldService){
     selectedWC = webComponentService.selectedWC;
     currentId = int.parse(routeProvider.parameters["id"]);
     print("selectedWC : $selectedWC");
     if (selectedWC == null){
-      webComponentService.dataInitialized().then((dynamic) {
+      testControllerInitializedAsync = webComponentService.dataInitialized().then((dynamic) {
         webComponentService.selectCurrentWebComponentFromId(currentId);
         selectedWC = webComponentService.selectedWC;
         setUpDemo(selectedWC);
@@ -27,6 +31,7 @@ class DetailCtrl {
     }
   }
 
+  //sets up demo data based on web component's demoLink
   setUpDemo(selectedWC){    
     if (selectedWC != null){
       _extractDemoType(selectedWC['demoLink']);
@@ -56,7 +61,6 @@ class DetailCtrl {
     print("extracted demoType : ${selectedWC['demoType']}");
   }
 
-  
   _setUpJsFiddleData(demoLink){
     selectedWC['demoLinkUrl'] = demoLink + 'embedded/result,js,html,css/';
     print('demoLinkUrl = ' + selectedWC['demoLinkUrl']);
