@@ -8,6 +8,7 @@ class WorldService {
   
   Router _router;
   String _world;
+  RouteProvider _routeProvider;
   List<Function> _onChangeWorldCallbacks;
   
   set world (String world) {
@@ -18,6 +19,7 @@ class WorldService {
       case 'polymer': _world = 'PolymerJsWc'; break;
       case 'polymerdart': _world = 'PolymerDartWc'; break;
       case 'jquery': _world = 'JqueryWc'; break;
+      default : _router.gotoUrl('/worlds');
     }
     triggerWorldChange();
   }
@@ -26,19 +28,31 @@ class WorldService {
     return _world;
   }
   
-  WorldService(Router this._router) {
+  WorldService(Router this._router, RouteProvider this._routeProvider) {
     _onChangeWorldCallbacks = new List();
-    // regexp to obtain the world
-    RegExp regExp = new RegExp(r'app/(.*?)/.*');
-    String location = window.location.href.toString();
-    if (!regExp.hasMatch(location)) {
-      _router.gotoUrl('/worlds');   
-    } else {
-      var matches = regExp.allMatches(location);
-      var match = matches.first;
-      world = match.group(1);
+    
+  }    
+  
+// regexp to obtain the world
+  String getCurrentWorld() {
+    try {
+      String world = _routeProvider.parameters["world"];
+      return world;
+    } catch (ex) {
+      return null;
     }
     
+  }
+  
+  String getNiceWorld() {
+    switch (world) {
+      case 'AngularJsWc': return 'angularjs'; break;
+      case 'AngularDartWc': return 'angulardart'; break;
+      case 'EmberWc': return 'ember'; break;
+      case 'PolymerJsWc': return 'polymer'; break;
+      case 'PolymerDartWc': return 'polymerdart'; break;
+      case 'JqueryWc': return 'jquery'; break;
+    }
   }
   
   void triggerWorldChange() {
@@ -53,14 +67,5 @@ class WorldService {
     _onChangeWorldCallbacks.remove(callbackFunction);
   }
  
-  
-  checkWorld() {
-    // verify if the world is contained in the world list
-    if (!WORLDS_LIST.contains(world)) {
-      Logger.root.warning("World is not valid");
-      _router.gotoUrl('/worlds');
-    }
-        
-  }
   
 }

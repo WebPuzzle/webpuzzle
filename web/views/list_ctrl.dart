@@ -25,7 +25,6 @@ class ListCtrl implements NgDetachAware {
   ListCtrl(Router this.router, Scope this.scope, WebComponentService this._wcService, WorldService this._worldService){
     _worldService.onChangeWorld(loadData);
     loadData();
-    print("Coucou de listctrl");
     viewMode = router.activePath.last.name;
     router.onRouteStart.listen((RouteStartEvent rse) {
       rse.completed.then((bool){
@@ -85,11 +84,12 @@ class ListCtrl implements NgDetachAware {
     _worldService.removeOnChangeWorldCallback(loadData);
   }
   
-  Future loadData() {
-    print("LOAD DATA");
-    return _wcService.load().then((data) => webcomponents = data);
+  loadData() {
+    _wcService.loadWc().then((data) => webcomponents = data);
   }
   
+  //Sets the selected flags to true for a given sortingType object
+  //Resets all other flags to false
   selectSortingType(sortingType){
     sortingTypes.forEach((type) => type['selected'] = false);
     sortingType['selected'] = true;
@@ -97,6 +97,8 @@ class ListCtrl implements NgDetachAware {
 
   }
   
+  //Sets the selected flags to true for a given filterType object
+  //Resets all other flags to false
   selectFilterType(filter){
     filterTypes.forEach((type) => type['selected'] = false);
     filter['selected'] = true;

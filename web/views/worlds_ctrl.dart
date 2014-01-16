@@ -15,12 +15,5 @@ class WorldsCtrl {
     _rootScope = scope.$root;
    
   }
-  
-  void changeWorld(String world) {
-    print("change WORLD !!!! $world");
-    worldService.world = world;
-  }
-  
- 
-  
+   
 }

@@ -25,7 +25,7 @@ class UserService {
   }
   
   String getToken() {
-    return window.localStorage['github-user-info'];
+    return window.localStorage['github-token'];
   }
   
   void setToken(String token) {
