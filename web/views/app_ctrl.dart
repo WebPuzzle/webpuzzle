@@ -6,8 +6,6 @@ part of webpuzzle;
 )
 class AppCtrl {
   
-  
-  
   String authentUrl;
   UserService userService;
   WebComponentService webComponentService;
