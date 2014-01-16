@@ -26,27 +26,16 @@ class WorldService {
   }
   
   get world {
-    if(!WORLDS_LIST.contains(_world) && window.localStorage['world'] !=null) {
-      world = window.localStorage['world'];
-    }
     return _world;
   }
   
   WorldService(Router this._router, RouteProvider this._routeProvider) {
     _onChangeWorldCallbacks = new List();
+    if(window.localStorage['world'] !=null)
+      world = window.localStorage['world'];
   }    
   
-// regexp to obtain the world
-  String getCurrentWorld() {
-    try {
-      String world = _routeProvider.parameters["world"];
-      return world;
-    } catch (ex) {
-      return null;
-    }
-    
-  }
-  
+
   String getNiceWorld() {
     switch (world) {
       case 'AngularJsWc': return 'angularjs'; break;
