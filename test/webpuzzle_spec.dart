@@ -16,6 +16,7 @@ part 'controllers/list_ctrl_spec.dart';
 part 'controllers/detail_ctrl_spec.dart';
 
 part 'services/webcomponent_service_spec.dart';
+part 'services/world_service_spec.dart';
 
 main(){
   testAppCtrl();
@@ -23,4 +24,5 @@ main(){
   testDetailCtrl();
   
   testWebComponentService();
+  testWorldService();
 }

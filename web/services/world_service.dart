@@ -21,6 +21,7 @@ class WorldService {
       case 'jquery': _world = 'JqueryWc'; break;
       default : _router.gotoUrl('/worlds');
     }
+    window.localStorage['world'] = world;
     triggerWorldChange();
   }
   
@@ -30,20 +31,11 @@ class WorldService {
   
   WorldService(Router this._router, RouteProvider this._routeProvider) {
     _onChangeWorldCallbacks = new List();
-    
+    if(window.localStorage['world'] !=null)
+      world = window.localStorage['world'];
   }    
   
-// regexp to obtain the world
-  String getCurrentWorld() {
-    try {
-      String world = _routeProvider.parameters["world"];
-      return world;
-    } catch (ex) {
-      return null;
-    }
-    
-  }
-  
+
   String getNiceWorld() {
     switch (world) {
       case 'AngularJsWc': return 'angularjs'; break;
