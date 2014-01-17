@@ -37,9 +37,17 @@ testWebComponentService(){
       
     });
     
+    test("should select a current web component based on an id", (){
+      
+    });
+
     test("should deselect the current web component", (){
       
     });
 
+    test("should POST a given web component", (){
+      
+    });
+    
   });
 }
