@@ -1,5 +1,7 @@
 module.exports = function(grunt) {
 
+
+
   // Project configuration.
   grunt.initConfig({
     watch: {
@@ -34,6 +36,16 @@ module.exports = function(grunt) {
           ext: '.css'
         }]
       }
+    },
+    karma: {
+      unit: {
+        configFile: 'karma-dart.conf'
+      }
+    },
+    githooks: {
+      all: {
+        'pre-commit': 'test'
+      }
     }
   });
 
@@ -41,12 +53,19 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-autoprefixer');
+   grunt.loadNpmTasks('grunt-githooks');
+   grunt.loadNpmTasks('grunt-karma');
 
   // Default task(s).
   grunt.registerTask('default', [
+    'githooks',
     'less',
     'autoprefixer',
     'watch'
     ]);
+
+  grunt.registerTask('test', [
+    'karma'
+  ]);
 
 };

@@ -5,8 +5,8 @@ class RouteProviderTestWorldService extends Mock implements RouteProvider{}
 
 testWorldService() {
   group("[WorldService]", (){
-    Router router;
-    RouteProvider routeProvider;
+    RouterTestWorldService router;
+    RouteProviderTestWorldService routeProvider;
     
     setUp( () {
       router = new RouterTestWorldService();
@@ -22,7 +22,14 @@ testWorldService() {
     test("should initialize world_service with a world", () {
       html.window.localStorage['world'] = "angularjs";
       WorldService worldService = new WorldService(router, routeProvider);
-      expect(worldService.world, "AngularJsWv");
+      expect(worldService.world, "AngularJsWc");
+    });
+    
+    test("should redirect the user", () {
+      html.window.localStorage['world'] = "fakeWorld";
+      router.when(callsTo("gotoUrl")).thenReturn(null);
+      WorldService worldService = new WorldService(router, routeProvider);
+      router.getLogs(callsTo("gotoUrl")).verify(happenedOnce);
     });
     
   });
