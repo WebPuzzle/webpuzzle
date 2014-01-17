@@ -24,9 +24,7 @@
     "karma-requirejs": "~0.2.0",
     "karma-phantomjs-launcher": "~0.1.1",
     "karma": "~0.10.8",
-    "karma-dart": "~0.2.6",
-    "grunt-githooks": "~0.3.1",
-    "grunt-karma": "~0.6.2"
+    "karma-dart": "~0.2.6"
   },
   "engines": {
     "node": ">=0.8.0"
