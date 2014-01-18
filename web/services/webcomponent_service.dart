@@ -20,7 +20,8 @@ class WebComponentService {
   }
   
   loadWc() {
-    _whenDataIsLoaded = _http(method: 'GET', url: "${_wsUrl.webServiceUrl}/web_components/${_worldService.world}.json").then((HttpResponse response) {
+    _whenDataIsLoaded = _http(method: 'GET', 
+        url: "${_wsUrl.webServiceUrl}/web_components/${_worldService.world}.json").then((HttpResponse response) {
       webcomponents = response.data;
       return webcomponents;
     });
@@ -46,8 +47,11 @@ class WebComponentService {
   }
   
   Future<HttpResponse> postWc(webComponent) {
-    return _http(method: 'POST', url:'${_wsUrl.webServiceUrl}/web_component/${_worldService.world}.json', data:webComponent, params:{'auth_token': _userService.getToken()}).then((HttpResponse response) {
+    return _http(method: 'POST', url:'${_wsUrl.webServiceUrl}/web_component/${_worldService.world}.json', 
+        data:webComponent, params:{'auth_token': _userService.getToken()}).then((HttpResponse response) {
       return response.data;
+    }).catchError((e){
+      print(e);
     });
   }
   

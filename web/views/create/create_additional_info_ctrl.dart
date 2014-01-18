@@ -7,19 +7,23 @@ part of webpuzzle;
 class CreateAdditionalInfoCtrl {
   
   RouteProvider _routeProvider;
+  var _wsUrl;
+  var _githubService;
 
-  CreateAdditionalInfoCtrl (Scope scope, RouteProvider this._routeProvider, WebComponentService webComponentService){
+  CreateAdditionalInfoCtrl (Scope scope, RouteProvider this._routeProvider, WebComponentService webComponentService, WsUrl this._wsUrl, GithubService this._githubService){
     
     scope['wc'] = {
       'githubLink': '${_routeProvider.parameters['user']}/${_routeProvider.parameters['repo']}',
       'name': '',
       'description': '',
       'imageLink': '',
-      'demoLink': ''
+      'demoLink': '',
+      'imageId':'',
+      'author':_routeProvider.parameters['user']
     };
     
     scope['saveWc'] = (wc) {
-      print("click");
+      print("click");      
       webComponentService.postWc(wc).then((data) => scope['data'] = data);
     };
   }

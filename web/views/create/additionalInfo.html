@@ -1,4 +1,5 @@
-<div additional-info-ctrl class="col-md-6">
+<div additional-info-ctrl>
+<div class="col-md-6">
     <form name="webComponentForm" role="form" class="form-horizontal create-form" novalidate>
         <div class="form-group">
             <label for="githubLinkWC" class="col-md-2 control-label">Github link</label>
@@ -22,9 +23,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="imageLinkWC" class="col-md-2 control-label">Image link</label>
+            <label for="imageLinkWC" class="col-md-2 control-label">Image</label>
             <div class="col-md-10">
-                <input type="text" ng-model="wc.imageLink" class="form-control" id="imageLinkWC" placeholder="image link of your WC"/>
+                <input type="file" wp-on-change class="form-control" id="imageWC"/>
             </div>
         </div>
 
@@ -52,5 +53,6 @@
 
 <div class="col-md-6">
     <h1>Preview</h1>
-    <web-component clickable="false"/>
+    <webcomponent clickable="false" wcmodel="wc"></webcomponent>
+</div>
 </div>

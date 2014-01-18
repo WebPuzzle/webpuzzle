@@ -30,6 +30,7 @@ part 'directive/wp-navbar-collapse.dart';
 part 'services/world_service.dart';
 part 'views/worlds_ctrl.dart';
 part 'directive/wp-tab.dart';
+part 'directive/wp-on-change.dart';
 part 'components/readme_component.dart';
 
 class WebPuzzleApp extends Module {
@@ -51,13 +52,14 @@ class WebPuzzleApp extends Module {
     type(WorldsCtrl);
     type(WorldPickerComponent);
     type(WpTab);
+    type(WpOnChange);
     
     //services
     type(UserService);
     type(WsUrl);
     type(WebComponentService);
     type(GithubService);
-
+    
     type(RouteInitializer, implementedBy: WebPuzzleRouteInitializer);
     factory(NgRoutingUsePushState, (_) => new NgRoutingUsePushState.value(false));
   }
