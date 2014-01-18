@@ -32,7 +32,6 @@ part 'views/worlds_ctrl.dart';
 part 'directive/wp-tab.dart';
 part 'directive/wp-on-change.dart';
 part 'components/readme_component.dart';
-part 'views/test_ctrl.dart';
 
 class WebPuzzleApp extends Module {
   WebPuzzleApp(){
@@ -60,12 +59,7 @@ class WebPuzzleApp extends Module {
     type(WsUrl);
     type(WebComponentService);
     type(GithubService);
-<<<<<<< HEAD
-    type(AuthTokenCtrl);
-    type(TestCtrl);
-=======
-
->>>>>>> 74fde0a6f339dcba6b9b9a040c59fc25ceb3df27
+    
     type(RouteInitializer, implementedBy: WebPuzzleRouteInitializer);
     factory(NgRoutingUsePushState, (_) => new NgRoutingUsePushState.value(false));
   }

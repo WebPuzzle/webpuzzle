@@ -50,6 +50,8 @@ class WebComponentService {
     return _http(method: 'POST', url:'${_wsUrl.webServiceUrl}/web_component/${_worldService.world}.json', 
         data:webComponent, params:{'auth_token': _userService.getToken()}).then((HttpResponse response) {
       return response.data;
+    }).catchError((e){
+      print(e);
     });
   }
   
