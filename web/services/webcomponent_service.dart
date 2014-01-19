@@ -29,14 +29,14 @@ class WebComponentService {
   }
   
   void selectCurrentWebComponent(wc){
-    if (selectedWC != null){
-      selectedWC['selected'] = false;
-    }
+    webcomponents.forEach((wc) {
+      if (!identical(wc, selectedWC)) wc['selected'] = false;
+    });
     selectedWC = wc;
     selectedWC['selected'] = true;
   }
   
-  void selectCurrentWebComponentFromId(int id){
+  void selectCurrentWebComponentById(int id){
     selectCurrentWebComponent(webcomponents.firstWhere((wc) => wc['id'] == id));
   }
   

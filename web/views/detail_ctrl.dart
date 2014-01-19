@@ -21,7 +21,7 @@ class DetailCtrl {
     print("selectedWC : $selectedWC");
     if (selectedWC == null){
       testControllerInitializedAsync = webComponentService.dataInitialized().then((dynamic) {
-        webComponentService.selectCurrentWebComponentFromId(currentId);
+        webComponentService.selectCurrentWebComponentById(currentId);
         selectedWC = webComponentService.selectedWC;
         setUpDemo(selectedWC);
         print("No selectedWC in memory, using url parameter 'id'");

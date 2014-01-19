@@ -27,7 +27,7 @@ testDetailCtrl() {
 
     test("should initialize without a selectedWC in WCService", (){
       webComponentService.when(callsTo("dataInitialized")).thenReturn(new Future.value(null));
-      webComponentService.when(callsTo("selectCurrentWebComponentFromId"))
+      webComponentService.when(callsTo("selectCurrentWebComponentById"))
         .thenCall((int id) => webComponentService.selectedWC = {"name" : "I am a fake wc"});
       DetailCtrl detailCtrl = new DetailCtrl(routeProvider, webComponentService, worldService);
       webComponentService.getLogs(callsTo("dataInitialized")).verify(happenedOnce);
