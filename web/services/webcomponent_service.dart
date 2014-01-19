@@ -29,8 +29,8 @@ class WebComponentService {
   }
   
   void selectCurrentWebComponent(wc){
-    webcomponents.forEach((wc) {
-      if (!identical(wc, selectedWC)) wc['selected'] = false;
+    webcomponents.forEach((currentWc) {
+      currentWc['selected'] = false;
     });
     selectedWC = wc;
     selectedWC['selected'] = true;

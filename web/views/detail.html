@@ -1,7 +1,7 @@
 <div detail-ctrl id="detail-body" >
   <div id="detail-wc">
       <div id="detail-backtolist">
-        <i class="fa fa-backward"></i> <a href="#!/app/{{detailCtrl.worldService.getNiceWorld()}}/list" ng-click="detailCtrl.wcService.deselectCurrentWebComponent()">Back to list</a>
+        <i class="fa fa-backward"></i> <a href="#!/app/{{detailCtrl.worldService.getNiceWorld()}}/list" ng-click="detailCtrl.webComponentService.deselectCurrentWebComponent()">Back to list</a>
       </div>
       <div id="detail-image" class="col-sm-4">
           <img ng-src="{{detailCtrl.selectedWC.imageLink}}"/>
