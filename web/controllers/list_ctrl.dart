@@ -23,7 +23,7 @@ class ListCtrl implements NgDetachAware {
   var bool = true;
 
   ListCtrl(Router this.router, Scope this.scope, WebComponentService this._wcService, WorldService this._worldService){
-    _worldService.onChangeWorld(loadData);
+    scope.$on("worldChanged", loadData());
     loadData();
     viewMode = router.activePath.last.name;
     router.onRouteStart.listen((RouteStartEvent rse) {
@@ -78,10 +78,6 @@ class ListCtrl implements NgDetachAware {
      'selected': false
    }
    ];
-  }
-  
-  detach() {
-    _worldService.removeOnChangeWorldCallback(loadData);
   }
   
   loadData() {
