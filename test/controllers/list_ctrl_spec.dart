@@ -57,9 +57,9 @@ testListCtrl(){
     }); 
 
     test("should initialize controller", (){
-      worldService.getLogs(callsTo("onChangeWorld")).verify(happenedOnce);
+      scope.getLogs(callsTo(r"$on")).verify(happenedOnce);
       scope.getLogs(callsTo(r"$watch")).verify(happenedExactly(2));
-      webComponentService.getLogs(callsTo("loadWc")).verify(happenedOnce);
+      webComponentService.getLogs(callsTo("loadWc")).verify(happenedExactly(2));
       listCtrl.loadData().then((value){
         expect(listCtrl.webcomponents.length, equals(2));
       });
