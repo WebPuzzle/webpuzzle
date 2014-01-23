@@ -10,15 +10,13 @@
           <h1>{{detailCtrl.selectedWC.name}}</h1>
           <p>{{detailCtrl.selectedWC.description}}</p>
 
-          <a class="btn btn-default" href="{{detailCtrl.selectedWC.githubLink + '/archive/master.zip'}}">
+          <a class="btn btn-default" href="https://github.com/{{detailCtrl.selectedWC.githubLink + '/archive/master.zip'}}">
               <i class="fa fa-download"></i> Download
           </a>
 
-          <a class="btn btn-default" href="{{detailCtrl.selectedWC.githubLink}}" target="_blank">
+          <a class="btn btn-default" href="https://github.com/{{detailCtrl.selectedWC.githubLink}}" target="_blank">
               <i class="fa fa-github"></i>  Github repository
           </a>
-
-          <p style="margin: 20px 0"><a href="{{detailCtrl.selectedWC.demoLink}}">Link to demo</a></a></p>
       </div>
   </div>
   

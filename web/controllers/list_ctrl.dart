@@ -12,7 +12,7 @@ class ListCtrl {
   var nameFilter = '';
   var sortingTypes;
   var filterTypes;
-  var selectedSortingFilter = 'name';
+  var selectedSortingFilter;
   var selectedFilter = 'name';
   var viewMode;
   var filterObject = {'name': '', 'submitter': ''};
@@ -40,31 +40,21 @@ class ListCtrl {
     });
     
     sortingTypes = [
+    {
+      'name': 'Newest',
+      'iconCss': 'fa fa-clock-o',
+      'filter': getValueFromTimestamp,
+      'selected' : true
+    },
    {
      'name': 'Ascending alphabetical order',
      'iconCss': 'fa fa-sort-alpha-asc',
      'filter': 'name',
-     'selected' : true
-   },
-   {
-     'name': 'Descending alphabetical order',
-     'iconCss': 'fa fa-sort-alpha-desc',
-     'filter': '-name',
-     'selected' : false
-   },
-   {
-     'name': 'Descending popularity order',
-     'iconCss': 'fa fa-sort-amount-desc',
-     'filter': '-popularity',
-     'selected' : false
-   },
-   {
-     'name': 'Ascending popularity order',
-     'iconCss': 'fa fa-sort-amount-asc',
-     'filter': 'popularity',
      'selected' : false
    }
    ];
+    
+    selectedSortingFilter = getValueFromTimestamp;
     
     filterTypes = [
    {
@@ -74,10 +64,12 @@ class ListCtrl {
    },
    {
      'name': 'By author',
-     'filter': 'submitter',
+     'filter': 'author',
      'selected': false
    }
    ];
+    
+    scope["getValueFromTimestamp"] = getValueFromTimestamp;
   }
   
   loadData() {
@@ -99,5 +91,10 @@ class ListCtrl {
     filterTypes.forEach((type) => type['selected'] = false);
     filter['selected'] = true;
     selectedFilter = filter['filter'];
+  }
+  
+  getValueFromTimestamp(timestamp){
+    DateTime date = DateTime.parse(timestamp['updated_at']);
+    return -date.millisecondsSinceEpoch;
   }
 }
