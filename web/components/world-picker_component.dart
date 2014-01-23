@@ -6,7 +6,7 @@ part of webpuzzle;
     publishAs: 'worldPickerCtrl',
     applyAuthorStyles: true
 )
-class WorldPickerComponent implements NgDetachAware {
+class WorldPickerComponent {
   
   WorldService worldService;
   String currentWorld;
@@ -14,9 +14,9 @@ class WorldPickerComponent implements NgDetachAware {
   
   Router _router;
   
-  WorldPickerComponent(WorldService this.worldService, Router this._router) {
+  WorldPickerComponent(WorldService this.worldService, Router this._router, Scope scope) {
     createMenu();
-    worldService.onChangeWorld(createMenu);
+    scope.$on("worldChanged", createMenu());
     
   }
   
@@ -25,10 +25,6 @@ class WorldPickerComponent implements NgDetachAware {
     worlds = new List.from(WorldService.NICE_WORLDS_LIST);
     worlds.remove(currentWorld);   
     print("WORLDS $worlds");
-  }
-  
-  detach() {
-    worldService.removeOnChangeWorldCallback(createMenu);
   }
    
 }
