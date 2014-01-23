@@ -20,23 +20,24 @@ class WebComponentService {
   }
   
   loadWc() {
-    _whenDataIsLoaded = _http(method: 'GET', 
-        url: "${_wsUrl.webServiceUrl}/web_components/${_worldService.world}.json").then((HttpResponse response) {
-      webcomponents = response.data;
-      return webcomponents;
-    });
+    if (_whenDataIsLoaded == null){
+      _whenDataIsLoaded = _http(method: 'GET', 
+          url: "${_wsUrl.webServiceUrl}/web_components/${_worldService.world}.json").then((HttpResponse response) {
+        webcomponents = response.data;
+        return webcomponents;
+      });
+    }
     return _whenDataIsLoaded;
   }
   
   void selectCurrentWebComponent(wc){
-    deselectCurrentWebComponent();
-    selectedWC = wc;
-    selectedWC['selected'] = true;
-    webcomponents.forEach((awc){print("awc : ${awc}");});
+    selectCurrentWebComponentById(wc['id']);
   }
   
   void selectCurrentWebComponentById(int id){
-    selectCurrentWebComponent(webcomponents.firstWhere((wc) => wc['id'] == id));
+    deselectCurrentWebComponent();
+    selectedWC = webcomponents.firstWhere((wc) => wc['id'] == id);
+    selectedWC['selected'] = true;
   }
   
   void deselectCurrentWebComponent(){
