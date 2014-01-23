@@ -29,11 +29,10 @@ class WebComponentService {
   }
   
   void selectCurrentWebComponent(wc){
-    webcomponents.forEach((currentWc) {
-      currentWc['selected'] = false;
-    });
+    deselectCurrentWebComponent();
     selectedWC = wc;
     selectedWC['selected'] = true;
+    webcomponents.forEach((awc){print("awc : ${awc}");});
   }
   
   void selectCurrentWebComponentById(int id){
@@ -42,7 +41,7 @@ class WebComponentService {
   
   void deselectCurrentWebComponent(){
     webcomponents.forEach((wc){
-      if (wc['selected'] == true) wc['selected'] = false;
+      wc['selected'] = false;
     });
   }
   
