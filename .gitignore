@@ -8,3 +8,5 @@ node_modules/
 /web/webpuzzle.dart.js.deps
 
 /web/webpuzzle.dart.precompiled.js
+
+/build/webpuzzle.dart.js.map
