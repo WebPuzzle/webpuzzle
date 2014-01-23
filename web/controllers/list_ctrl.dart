@@ -4,7 +4,7 @@ part of webpuzzle;
     selector: '[list-ctrl]',
     publishAs: 'listCtrl'
 )
-class ListCtrl implements NgDetachAware {
+class ListCtrl {
   Router router;
   Http _http;
   Scope scope;
