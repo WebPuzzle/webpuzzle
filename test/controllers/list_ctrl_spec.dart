@@ -66,7 +66,7 @@ testListCtrl(){
       print("activePath.first ${router.activePath.first.name}");
       expect(listCtrl.viewMode, equals("list"));
       router.getLogs(callsTo("get onRouteStart")).verify(happenedOnce);
-      expect(listCtrl.sortingTypes.length, equals(4));
+      expect(listCtrl.sortingTypes.length, equals(2));
       expect(listCtrl.filterTypes.length, equals(2));
     });
     
