@@ -1,7 +1,7 @@
 <div detail-ctrl id="detail-body" >
   <div id="detail-wc">
       <div id="detail-backtolist">
-        <i class="fa fa-backward"></i> <a href="#!/app/{{detailCtrl.worldService.getNiceWorld()}}/list" ng-click="detailCtrl.wcService.deselectCurrentWebComponent()">Back to list</a>
+        <i class="fa fa-backward"></i> <a href="#!/app/{{detailCtrl.worldService.getNiceWorld()}}/list" ng-click="detailCtrl.webComponentService.deselectCurrentWebComponent()">Back to list</a>
       </div>
       <div id="detail-image" class="col-sm-4">
           <img ng-src="{{detailCtrl.selectedWC.imageLink}}"/>
@@ -10,15 +10,13 @@
           <h1>{{detailCtrl.selectedWC.name}}</h1>
           <p>{{detailCtrl.selectedWC.description}}</p>
 
-          <a class="btn btn-default" href="{{detailCtrl.selectedWC.githubLink + '/archive/master.zip'}}">
+          <a class="btn btn-default" href="https://github.com/{{detailCtrl.selectedWC.githubLink + '/archive/master.zip'}}">
               <i class="fa fa-download"></i> Download
           </a>
 
-          <a class="btn btn-default" href="{{detailCtrl.selectedWC.githubLink}}" target="_blank">
+          <a class="btn btn-default" href="https://github.com/{{detailCtrl.selectedWC.githubLink}}" target="_blank">
               <i class="fa fa-github"></i>  Github repository
           </a>
-
-          <p style="margin: 20px 0"><a href="{{detailCtrl.selectedWC.demoLink}}">Link to demo</a></a></p>
       </div>
   </div>
   
@@ -35,6 +33,9 @@
       <div class="tab-pane active in fade" id="demo">
         <div ng-if="detailCtrl.selectedWC.demoType == 'jsfiddle'">
             <iframe width="100%" height="350" ng-src="{{detailCtrl.selectedWC.demoLinkUrl}}" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        </div>
+        <div ng-if="detailCtrl.selectedWC.demoType == 'plunker'">
+            <iframe width="100%" height="350" ng-src="http://embed.plnkr.co/{{detailCtrl.selectedWC.plunkerDemoCode}}/preview" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
         </div>
         <div ng-if="detailCtrl.selectedWC.demoType == 'codepen'">
             <p data-height="268" data-theme-id="0" data-slug-hash="{{detailCtrl.selectedWC.codePen.slugHash}}" data-user="{{detailCtrl.selectedWC.codePen.user}}" data-default-tab="result" class='codepen'></p>

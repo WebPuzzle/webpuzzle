@@ -7601,4 +7601,8 @@ body {
   -webkit-transform: scale(1);
 }
 
+ul.nav-tabs li {
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=style.css.map */
