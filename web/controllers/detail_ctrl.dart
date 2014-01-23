@@ -32,7 +32,8 @@ class DetailCtrl {
   }
 
   //sets up demo data based on web component's demoLink
-  setUpDemo(selectedWC){    
+  setUpDemo(selectedWC){
+    print("demoLink : ${selectedWC['demoLink']}");
     if (selectedWC != null){
       _extractDemoType(selectedWC['demoLink']);
       if (selectedWC['demoType'] == 'codepen'){
@@ -40,6 +41,9 @@ class DetailCtrl {
       }
       if (selectedWC['demoType'] == 'jsfiddle'){
         _setUpJsFiddleData(selectedWC['demoLink']);
+      }
+      if (selectedWC['demoType'] == 'plunker'){
+        _setUpPlunkerData(selectedWC['demoLink']);
       }
     }else {
       print("cannot setUpDemo, selectedWC is null");
@@ -49,12 +53,15 @@ class DetailCtrl {
   _extractDemoType(demoLink){
     var regExpIsJsFiddle = new RegExp(r'/.*jsfiddle.*/');
     var regExpIsCodePen = new RegExp(r'/.*codepen.*/');
+    var regExpIsPlunker = new RegExp(r'/.*plnkr.*/');
     if (demoLink == null){
       selectedWC['demoType '] = 'none';
     } else if (regExpIsCodePen.hasMatch(demoLink)){
       selectedWC['demoType'] = 'codepen';
     } else if (regExpIsJsFiddle.hasMatch(demoLink)){
       selectedWC['demoType'] = 'jsfiddle';
+    } else if (regExpIsPlunker.hasMatch(demoLink)){
+      selectedWC['demoType'] = 'plunker';
     } else {
       selectedWC['demoType '] = 'none';
     }
@@ -74,6 +81,19 @@ class DetailCtrl {
        'user': matches.first.group(1),
        'slugHash': matches.first.group(2)
     };
+  }
+  
+  _setUpPlunkerData(demoLink){
+    print("demoLink $demoLink");
+    //supports those formats :
+    //http://plnkr.co/ofvGnY
+    //http://plnkr.co/edit/ofvGnY
+    //http://plnkr.co/edit/ZJY4rQ?p=info
+    //http://embed.plnkr.co/479Ru8/preview
+    var regExpPlunker = new RegExp(r'plnkr.co/(edit/)?(\w*)');
+    var matches = regExpPlunker.allMatches(demoLink);
+    selectedWC['plunkerDemoCode'] = matches.first.group(2);
+    print("match : ${matches.first.group(2)}");
   }
   
 }

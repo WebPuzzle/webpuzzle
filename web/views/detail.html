@@ -34,6 +34,9 @@
         <div ng-if="detailCtrl.selectedWC.demoType == 'jsfiddle'">
             <iframe width="100%" height="350" ng-src="{{detailCtrl.selectedWC.demoLinkUrl}}" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
         </div>
+        <div ng-if="detailCtrl.selectedWC.demoType == 'plunker'">
+            <iframe width="100%" height="350" ng-src="http://embed.plnkr.co/{{detailCtrl.selectedWC.plunkerDemoCode}}/preview" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+        </div>
         <div ng-if="detailCtrl.selectedWC.demoType == 'codepen'">
             <p data-height="268" data-theme-id="0" data-slug-hash="{{detailCtrl.selectedWC.codePen.slugHash}}" data-user="{{detailCtrl.selectedWC.codePen.user}}" data-default-tab="result" class='codepen'></p>
             <script async src="//codepen.io/assets/embed/ei.js"></script>
