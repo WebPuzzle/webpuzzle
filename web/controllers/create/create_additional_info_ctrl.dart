@@ -7,10 +7,11 @@ part of webpuzzle;
 class CreateAdditionalInfoCtrl {
   
   RouteProvider _routeProvider;
+  Router _router;
   var _wsUrl;
   var _githubService;
 
-  CreateAdditionalInfoCtrl (Scope scope, RouteProvider this._routeProvider, WebComponentService webComponentService, WsUrl this._wsUrl, GithubService this._githubService){
+  CreateAdditionalInfoCtrl (Scope scope, RouteProvider this._routeProvider, Router this._router, WebComponentService webComponentService, WsUrl this._wsUrl, GithubService this._githubService, WorldService worldService ){
     
     scope['wc'] = {
       'githubLink': '${_routeProvider.parameters['user']}/${_routeProvider.parameters['repo']}',
@@ -24,7 +25,11 @@ class CreateAdditionalInfoCtrl {
     
     scope['saveWc'] = (wc) {
       print("click");      
-      webComponentService.postWc(wc).then((data) => scope['data'] = data);
+      webComponentService.postWc(wc).then((data) => _router.go('app', {"world": worldService.getNiceWorld()}));
+    };
+    
+    scope['goBack'] = () {
+      _router.go('app.create.github', {"world": worldService.getNiceWorld()});                 
     };
   }
 
