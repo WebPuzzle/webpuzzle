@@ -12,23 +12,23 @@ import 'package:markdown/markdown.dart' as markdown;
 
 part 'web_puzzle_route_initializer.dart';
 
-part 'views/list_ctrl.dart';
-part 'views/app_ctrl.dart';
-part 'views/detail_ctrl.dart';
-part 'views/create/create_github_ctrl.dart';
-part 'views/create/create_additional_info_ctrl.dart';
+part 'controllers/list_ctrl.dart';
+part 'controllers/app_ctrl.dart';
+part 'controllers/detail_ctrl.dart';
+part 'controllers/create/create_github_ctrl.dart';
+part 'controllers/create/create_additional_info_ctrl.dart';
 part 'components/webcomponent_component.dart';
 part 'components/world-picker_component.dart';
 part 'services/github_service.dart';
 part 'services/ws_url.dart';
 part 'services/user_service.dart';
-part 'views/auth_token_ctrl.dart';
+part 'controllers/auth_token_ctrl.dart';
 part 'services/webcomponent_service.dart';
 part 'directive/wp-dropdown-menu.dart';
 part 'directive/wp-navbar-collapse.dart';
 
 part 'services/world_service.dart';
-part 'views/worlds_ctrl.dart';
+part 'controllers/worlds_ctrl.dart';
 part 'directive/wp-tab.dart';
 part 'directive/wp-on-change.dart';
 part 'components/readme_component.dart';

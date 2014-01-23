@@ -30,13 +30,13 @@
         {{wcCtrl.wc.description}}</p>
   </div>
   
-  <a href="{{(wcCtrl.wcClickable)? wcCtrl.wc.githubLink : ''}}"
+  <a href="{{(wcCtrl.wcClickable)? 'https://github.com/' + wcCtrl.wc.githubLink : ''}}"
     target="_blank">
     <div class="fa fa-github fa-2x icon-github">
       <div class="github-tooltip" title="GitHub repo"></div>
     </div>
   </a> <a
-    href="{{(wcCtrl.wcClickable)? wcCtrl.wc.githubLink + '/archive/master.zip' : ''}}"
+    href="{{(wcCtrl.wcClickable)? 'https://github.com/' + wcCtrl.wc.githubLink + '/archive/master.zip' : ''}}"
     target="_blank">
     <div class="fa fa-download fa-2x icon-download">
       <div class="github-tooltip" title="Download from Github Master">

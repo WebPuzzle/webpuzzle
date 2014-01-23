@@ -9,8 +9,13 @@ class WorldService {
   Router _router;
   String _world;
   RouteProvider _routeProvider;
-  List<Function> _onChangeWorldCallbacks;
+  Scope _$root;
   
+  /* 
+    on stocke le monde au format WS 
+  + on stocke le "nice world" dans le localStorage
+  + on lance l'événement worldChanged
+  */
   set world (String world) {
     switch (world) {
       case 'angularjs': _world = 'AngularJsWc'; break;
@@ -22,15 +27,15 @@ class WorldService {
       default : _router.gotoUrl('/worlds');
     }
     window.localStorage['world'] = world;
-    triggerWorldChange();
+    _$root.$broadcast("worldChanged");
   }
   
   get world {
     return _world;
   }
   
-  WorldService(Router this._router, RouteProvider this._routeProvider) {
-    _onChangeWorldCallbacks = new List();
+  WorldService(Router this._router, RouteProvider this._routeProvider, Scope scope) {
+    _$root = scope.$root;
     if(window.localStorage['world'] !=null)
       world = window.localStorage['world'];
   }    
@@ -45,18 +50,6 @@ class WorldService {
       case 'PolymerDartWc': return 'polymerdart'; break;
       case 'JqueryWc': return 'jquery'; break;
     }
-  }
-  
-  void triggerWorldChange() {
-    _onChangeWorldCallbacks.forEach((Function callback) => callback());
-  }
-  
-  void onChangeWorld(Function callbackFunction) {
-    _onChangeWorldCallbacks.add(callbackFunction);
-  }
-  
-  void removeOnChangeWorldCallback(Function callbackFunction) {
-    _onChangeWorldCallbacks.remove(callbackFunction);
   }
  
   

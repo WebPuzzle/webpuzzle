@@ -4,7 +4,7 @@ part of webpuzzle;
     selector: '[list-ctrl]',
     publishAs: 'listCtrl'
 )
-class ListCtrl implements NgDetachAware {
+class ListCtrl {
   Router router;
   Http _http;
   Scope scope;
@@ -12,7 +12,7 @@ class ListCtrl implements NgDetachAware {
   var nameFilter = '';
   var sortingTypes;
   var filterTypes;
-  var selectedSortingFilter = 'name';
+  var selectedSortingFilter;
   var selectedFilter = 'name';
   var viewMode;
   var filterObject = {'name': '', 'submitter': ''};
@@ -23,7 +23,7 @@ class ListCtrl implements NgDetachAware {
   var bool = true;
 
   ListCtrl(Router this.router, Scope this.scope, WebComponentService this._wcService, WorldService this._worldService){
-    _worldService.onChangeWorld(loadData);
+    scope.$on("worldChanged", loadData());
     loadData();
     viewMode = router.activePath.last.name;
     router.onRouteStart.listen((RouteStartEvent rse) {
@@ -40,31 +40,21 @@ class ListCtrl implements NgDetachAware {
     });
     
     sortingTypes = [
+    {
+      'name': 'Newest',
+      'iconCss': 'fa fa-clock-o',
+      'filter': getValueFromTimestamp,
+      'selected' : true
+    },
    {
      'name': 'Ascending alphabetical order',
      'iconCss': 'fa fa-sort-alpha-asc',
      'filter': 'name',
-     'selected' : true
-   },
-   {
-     'name': 'Descending alphabetical order',
-     'iconCss': 'fa fa-sort-alpha-desc',
-     'filter': '-name',
-     'selected' : false
-   },
-   {
-     'name': 'Descending popularity order',
-     'iconCss': 'fa fa-sort-amount-desc',
-     'filter': '-popularity',
-     'selected' : false
-   },
-   {
-     'name': 'Ascending popularity order',
-     'iconCss': 'fa fa-sort-amount-asc',
-     'filter': 'popularity',
      'selected' : false
    }
    ];
+    
+    selectedSortingFilter = getValueFromTimestamp;
     
     filterTypes = [
    {
@@ -74,14 +64,12 @@ class ListCtrl implements NgDetachAware {
    },
    {
      'name': 'By author',
-     'filter': 'submitter',
+     'filter': 'author',
      'selected': false
    }
    ];
-  }
-  
-  detach() {
-    _worldService.removeOnChangeWorldCallback(loadData);
+    
+    scope["getValueFromTimestamp"] = getValueFromTimestamp;
   }
   
   loadData() {
@@ -103,5 +91,10 @@ class ListCtrl implements NgDetachAware {
     filterTypes.forEach((type) => type['selected'] = false);
     filter['selected'] = true;
     selectedFilter = filter['filter'];
+  }
+  
+  getValueFromTimestamp(timestamp){
+    DateTime date = DateTime.parse(timestamp['updated_at']);
+    return -date.millisecondsSinceEpoch;
   }
 }

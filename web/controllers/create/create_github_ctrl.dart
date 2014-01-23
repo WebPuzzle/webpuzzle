@@ -20,7 +20,7 @@ class CreateGithubCtrl {
       String repo = _githubService.getRepoNameFromRepoUrl(githubLink);
       _githubService.checkRepo(user, repo)
         .then((HttpResponse httpResponse) {
-          router.gotoUrl('!/app/angularjs/create/additionalInfo/$user/$repo');
+          router.go('app.create.additionalInfo', {"world": _worldService.getNiceWorld(), "user": user, "repo": repo });
         });
     };
     

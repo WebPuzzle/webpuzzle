@@ -13,7 +13,7 @@ class ReadmeComponent{
   ReadmeComponent(Scope scope, GithubService githubService){
     scope.$watch('readmeCtrl.repositoryUrl', (data) {
       if (repositoryUrl != null){
-        githubService.getReadmeRaw(repositoryUrl).then((readmeRaw) => instantiateReadme(readmeRaw));
+        githubService.getReadmeRaw("https://github.com/" + repositoryUrl).then((readmeRaw) => instantiateReadme(readmeRaw));
       }
     });
   }
