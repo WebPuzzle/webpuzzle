@@ -10,6 +10,7 @@ class WebComponentService {
   var _wsUrl;
   var _worldService;
   UserService _userService;
+  String _oldWorld;
   
   WebComponentService(Http this._http, WsUrl this._wsUrl, WorldService this._worldService, UserService this._userService){
     loadWc();
@@ -20,9 +21,10 @@ class WebComponentService {
   }
   
   loadWc() {
-    if (_whenDataIsLoaded == null){
+    if ((_whenDataIsLoaded == null) || (_oldWorld != _worldService.world)){
+      _oldWorld = _worldService.world;
       _whenDataIsLoaded = _http(method: 'GET', 
-          url: "${_wsUrl.webServiceUrl}/web_components/${_worldService.world}.json").then((HttpResponse response) {
+          url: "${_wsUrl.webServiceUrl}/web_components/${_oldWorld}.json").then((HttpResponse response) {
         webcomponents = response.data;
         return webcomponents;
       });
