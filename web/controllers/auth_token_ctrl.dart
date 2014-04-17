@@ -5,19 +5,25 @@ part of webpuzzle;
     publishAs: "authTokenCtrl"
 )
 class AuthTokenCtrl {
-  
-  AuthTokenCtrl(UserService userService, RouteProvider routeProvider, Router router) {
+  UserService userService;
+  RouteProvider routeProvider;
+  Router router;
+
+  AuthTokenCtrl(UserService this.userService,
+                RouteProvider this.routeProvider,
+                Router this.router) {
     print("authentification");
     userService.checkToken(routeProvider.parameters['finalToken'])
-      .then((HttpResponse response) {
-        userService.setToken(routeProvider.parameters['finalToken']);
-        print("set token");
-        userService.setUserInfo(JSON.encode(response.data));
-        print("set user info ${JSON.encode(response.data)}");
-        userService.updateUserInfo();
-        router.gotoUrl('/app/list');
-      });
-    
+      .then(checkTokenSuccess);
+  }
+
+  checkTokenSuccess(HttpResponse response){
+    userService.setToken(routeProvider.parameters['finalToken']);
+    print("set token");
+    userService.setUserInfo(JSON.encode(response.data));
+    print("set user info ${JSON.encode(response.data)}");
+    userService.updateUserInfo();
+    router.gotoUrl('/app/list');
   }
   
 }

@@ -15,6 +15,7 @@ part 'controllers/app_ctrl_spec.dart';
 part 'controllers/list_ctrl_spec.dart';
 part 'controllers/detail_ctrl_spec.dart';
 part 'controllers/worlds_ctrl_spec.dart';
+part 'controllers/auth_token_ctrl_spec.dart';
 
 part 'services/webcomponent_service_spec.dart';
 part 'services/world_service_spec.dart';
@@ -24,6 +25,7 @@ main(){
   testListCtrl();
   testDetailCtrl();
   testWorldsCtrl();
+  testAuthTokenCtrl();
   
   testWebComponentService();
   testWorldService();
