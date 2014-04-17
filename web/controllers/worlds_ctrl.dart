@@ -5,9 +5,7 @@ part of webpuzzle;
     publishAs: 'worldsCtrl'
 )
 class WorldsCtrl {
-  
- 
-  
+
   WorldService worldService;
   Scope _rootScope;
   

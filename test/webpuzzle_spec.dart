@@ -14,6 +14,7 @@ import 'package:angular/mock/module.dart';
 part 'controllers/app_ctrl_spec.dart';
 part 'controllers/list_ctrl_spec.dart';
 part 'controllers/detail_ctrl_spec.dart';
+part 'controllers/worlds_ctrl_spec.dart';
 
 part 'services/webcomponent_service_spec.dart';
 part 'services/world_service_spec.dart';
@@ -22,6 +23,7 @@ main(){
   testAppCtrl();
   testListCtrl();
   testDetailCtrl();
+  testWorldsCtrl();
   
   testWebComponentService();
   testWorldService();
