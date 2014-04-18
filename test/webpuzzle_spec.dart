@@ -19,6 +19,8 @@ part 'controllers/auth_token_ctrl_spec.dart';
 
 part 'services/webcomponent_service_spec.dart';
 part 'services/world_service_spec.dart';
+part 'services/user_service_spec.dart';
+part 'services/github_service_spec.dart';
 
 main(){
   testAppCtrl();
@@ -29,4 +31,6 @@ main(){
   
   testWebComponentService();
   testWorldService();
+  testUserService();
+  testGithubService();
 }
