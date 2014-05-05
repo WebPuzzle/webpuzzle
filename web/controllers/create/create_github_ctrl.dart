@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgController(
+@Controller(
     selector: "[github-ctrl]",
     publishAs: "githubCtrl"
 )
@@ -15,7 +15,7 @@ class CreateGithubCtrl {
     _githubService.getUserRepos().then((repos) => userRepos = repos );
     print("repo $userRepos");
     
-    scope['moveToAddInfos'] = (githubLink) {
+    scope.context['moveToAddInfos'] = (githubLink) {
       String user = _githubService.getUserFromRepoUrl(githubLink);
       String repo = _githubService.getRepoNameFromRepoUrl(githubLink);
       _githubService.checkRepo(user, repo)
@@ -24,7 +24,7 @@ class CreateGithubCtrl {
         });
     };
     
-    scope['worldService'] = _worldService;
+    scope.context['worldService'] = _worldService;
     
   }
   

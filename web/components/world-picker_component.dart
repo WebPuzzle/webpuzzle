@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgComponent(
+@Component(
     selector: 'world-picker',
     templateUrl: 'components/world-picker.html',
     publishAs: 'worldPickerCtrl',
@@ -16,7 +16,7 @@ class WorldPickerComponent {
   
   WorldPickerComponent(WorldService this.worldService, Router this._router, Scope scope) {
     createMenu();
-    scope.$on("worldChanged", createMenu());
+    scope.on("worldChanged").listen(createMenu);
     
   }
   

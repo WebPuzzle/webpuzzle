@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgController(
+@Controller(
     selector: "[app-ctrl]",
     publishAs: "appCtrl"
 )
@@ -22,8 +22,8 @@ class AppCtrl {
     _worldService.world = _routeProvider.parameters["world"];
     print("2 - World service : world = ${_routeProvider.parameters["world"]}");
     print("active path ${_router.activePath.first.name}");
-    
-    scope['world'] = _worldService.getNiceWorld();
+
+    scope.context['world'] = _worldService.getNiceWorld();
     
   }
 }

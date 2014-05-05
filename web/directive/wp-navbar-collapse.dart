@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgDirective (
+@Decorator (
   selector: '.navbar[role=navigation]'    
  )
 class WpNavbarCollapse {

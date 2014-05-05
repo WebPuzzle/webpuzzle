@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgInjectableService()
+@Injectable()
 class GithubService {
 
   String githubApi = 'https://api.github.com';

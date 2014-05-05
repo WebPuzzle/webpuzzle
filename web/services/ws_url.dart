@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgInjectableService()
+@Injectable()
 class WsUrl {
   var webServiceUrl;
   

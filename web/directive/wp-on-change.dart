@@ -1,8 +1,8 @@
 part of webpuzzle;
 
-@NgDirective (
+@Decorator (
   selector: '[wp-on-change]',
-  publishAs: "wpCtrl",
+  //publishAs: "wpCtrl",
   map: const { 'on-complete': '&onComplete'})
   
 class WpOnChange {
@@ -37,10 +37,10 @@ class WpOnChange {
     xhr.onReadyStateChange.listen((e){
       if (xhr.readyState == 4 && xhr.status == 201) {
         print('callback ok');
-        print(_scope['wc']);
+        print(_scope.context['wc']);
         var response = JSON.decode(xhr.responseText);
-        _scope['wc']['imageId']=response['id'];
-        _scope['wc']['imageLink'] = response['images']['medium'];
+        _scope.context['wc']['imageId']=response['id'];
+        _scope.context['wc']['imageLink'] = response['images']['medium'];
         
       }
       else{

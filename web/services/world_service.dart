@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgInjectableService()
+@Injectable()
 class WorldService {
   
   static List<String> NICE_WORLDS_LIST = ['angularjs', 'angulardart', 'ember', 'jquery', 'polymer', 'polymerdart'];
@@ -9,7 +9,7 @@ class WorldService {
   Router _router;
   String _world;
   RouteProvider _routeProvider;
-  Scope _$root;
+  Scope _rootScope;
   
   /* 
     on stocke le monde au format WS 
@@ -27,7 +27,7 @@ class WorldService {
       default : _router.gotoUrl('/worlds');
     }
     window.localStorage['world'] = world;
-    _$root.$broadcast("worldChanged");
+    _rootScope.broadcast("worldChanged");
   }
   
   get world {
@@ -35,7 +35,7 @@ class WorldService {
   }
   
   WorldService(Router this._router, RouteProvider this._routeProvider, Scope scope) {
-    _$root = scope.$root;
+    _rootScope = scope.rootScope;
     if(window.localStorage['world'] !=null)
       world = window.localStorage['world'];
   }    

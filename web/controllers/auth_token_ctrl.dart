@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgController(
+@Controller(
     selector: "[auth-token-ctrl]",
     publishAs: "authTokenCtrl"
 )

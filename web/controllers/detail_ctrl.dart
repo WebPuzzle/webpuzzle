@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgController(
+@Controller(
     selector: "[detail-ctrl]",
     publishAs: "detailCtrl"
 )

@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgDirective (
+@Decorator (
   selector: '[wp-tabs]'    
  )
 class WpTab {

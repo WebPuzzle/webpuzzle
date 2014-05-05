@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgComponent(
+@Component(
     selector: 'webcomponent',
     templateUrl: 'components/webcomponent.html',
     publishAs: 'wcCtrl',

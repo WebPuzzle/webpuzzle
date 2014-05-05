@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgComponent(
+@Component(
     selector: '[wp-readme]',
     publishAs: 'readmeCtrl',
     templateUrl: 'components/readme.html'
@@ -11,7 +11,7 @@ class ReadmeComponent{
   String readmeHtml;
   
   ReadmeComponent(Scope scope, GithubService githubService){
-    scope.$watch('readmeCtrl.repositoryUrl', (data) {
+    scope.watch('readmeCtrl.repositoryUrl', (data) {
       if (repositoryUrl != null){
         githubService.getReadmeRaw("https://github.com/" + repositoryUrl).then((readmeRaw) => instantiateReadme(readmeRaw));
       }

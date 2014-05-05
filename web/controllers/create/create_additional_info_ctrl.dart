@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgController(
+@Controller(
     selector: "[additional-info-ctrl]",
     publishAs: "additionalInfoCtrl"
 )
@@ -13,7 +13,7 @@ class CreateAdditionalInfoCtrl {
 
   CreateAdditionalInfoCtrl (Scope scope, RouteProvider this._routeProvider, Router this._router, WebComponentService webComponentService, WsUrl this._wsUrl, GithubService this._githubService, WorldService worldService ){
     
-    scope['wc'] = {
+    scope.context['wc'] = {
       'githubLink': '${_routeProvider.parameters['user']}/${_routeProvider.parameters['repo']}',
       'name': '',
       'description': '',
@@ -23,12 +23,12 @@ class CreateAdditionalInfoCtrl {
       'author':_routeProvider.parameters['user']
     };
     
-    scope['saveWc'] = (wc) {
+    scope.context['saveWc'] = (wc) {
       print("click");      
       webComponentService.postWc(wc).then((data) => _router.go('app', {"world": worldService.getNiceWorld()}));
     };
     
-    scope['goBack'] = () {
+    scope.context['goBack'] = () {
       _router.go('app.create.github', {"world": worldService.getNiceWorld()});                 
     };
   }

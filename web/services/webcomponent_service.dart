@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgInjectableService()
+@Injectable()
 class WebComponentService {
   List webcomponents;
   var selectedWC;

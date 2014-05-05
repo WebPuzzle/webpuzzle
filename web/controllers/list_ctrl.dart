@@ -1,6 +1,6 @@
 part of webpuzzle;
 
-@NgController(
+@Controller(
     selector: '[list-ctrl]',
     publishAs: 'listCtrl'
 )
@@ -23,7 +23,7 @@ class ListCtrl {
   var bool = true;
 
   ListCtrl(Router this.router, Scope this.scope, WebComponentService this._wcService, WorldService this._worldService){
-    scope.$on("worldChanged", loadData());
+    scope.on("worldChanged").listen(loadData);
     loadData();
     viewMode = router.activePath.last.name;
     router.onRouteStart.listen((RouteStartEvent rse) {
@@ -33,8 +33,8 @@ class ListCtrl {
     });
     
     //Binding a custom filterObject to the view to filter by name and submitter
-    scope.$watch('listCtrl.nameFilter', () => filterObject[selectedFilter] = nameFilter);
-    scope.$watch('listCtrl.selectedFilter',() {
+    scope.watch('listCtrl.nameFilter', () => filterObject[selectedFilter] = nameFilter);
+    scope.watch('listCtrl.selectedFilter',() {
       filterObject = {'name': '', 'submitter': ''};
       filterObject[selectedFilter] = nameFilter;
     });
@@ -69,7 +69,7 @@ class ListCtrl {
    }
    ];
     
-    scope["getValueFromTimestamp"] = getValueFromTimestamp;
+    scope.context['getValueFromTimestamp'] = getValueFromTimestamp;
   }
   
   loadData() {
