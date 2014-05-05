@@ -9,13 +9,16 @@ class ReadmeComponent{
   @NgTwoWay("repository-url")
   String repositoryUrl;
   String readmeHtml;
+  GithubService _githubService;
   
-  ReadmeComponent(Scope scope, GithubService githubService){
-    scope.watch('readmeCtrl.repositoryUrl', (data) {
-      if (repositoryUrl != null){
-        githubService.getReadmeRaw("https://github.com/" + repositoryUrl).then((readmeRaw) => instantiateReadme(readmeRaw));
-      }
-    });
+  ReadmeComponent(Scope scope, GithubService this._githubService){
+    scope.watch('readmeCtrl.repositoryUrl', getReadMe);
+  }
+
+  void getReadMe(oldData, data){
+    if (repositoryUrl != null){
+      _githubService.getReadmeRaw("https://github.com/" + repositoryUrl).then((readmeRaw) => instantiateReadme(readmeRaw));
+    }
   }
   
   void instantiateReadme(String readmeRaw){

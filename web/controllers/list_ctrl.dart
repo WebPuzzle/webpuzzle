@@ -33,8 +33,8 @@ class ListCtrl {
     });
     
     //Binding a custom filterObject to the view to filter by name and submitter
-    scope.watch('listCtrl.nameFilter', () => filterObject[selectedFilter] = nameFilter);
-    scope.watch('listCtrl.selectedFilter',() {
+    scope.watch('listCtrl.nameFilter', (oldData, data) => filterObject[selectedFilter] = nameFilter);
+    scope.watch('listCtrl.selectedFilter',(oldData, data) {
       filterObject = {'name': '', 'submitter': ''};
       filterObject[selectedFilter] = nameFilter;
     });
