@@ -8,7 +8,7 @@ class ListCtrl {
   Router router;
   Http _http;
   Scope scope;
-  var webcomponents = [];
+  var webcomponents = [{}];
   var nameFilter = '';
   var sortingTypes;
   var filterTypes;
@@ -82,7 +82,6 @@ class ListCtrl {
     sortingTypes.forEach((type) => type['selected'] = false);
     sortingType['selected'] = true;
     selectedSortingFilter = sortingType['filter'];
-
   }
   
   //Sets the selected flags to true for a given filterType object
@@ -93,8 +92,11 @@ class ListCtrl {
     selectedFilter = filter['filter'];
   }
   
-  getValueFromTimestamp(timestamp){
-    DateTime date = DateTime.parse(timestamp['updated_at']);
+  getValueFromTimestamp(wc){
+    if (wc['updated_at'] == null){
+      return 0;
+    }
+    DateTime date = DateTime.parse(wc['updated_at']);
     return -date.millisecondsSinceEpoch;
   }
 }
