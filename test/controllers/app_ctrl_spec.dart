@@ -1,11 +1,7 @@
 part of webpuzzle_spec;
 
-class ScopeTestApp extends Mock implements Scope { 
-  Map map = new Map();
-  operator []=(K key, V value) {
-    map[key] = value;
-  }
-  operator [] (K key) => map[key];
+class ScopeTestApp extends Mock implements Scope {
+  Map context = new Map();
 }
 class RouteProviderTestApp extends Mock implements RouteProvider {
   Map parameters = {"world" : "a world"};
@@ -45,7 +41,7 @@ testAppCtrl(){
           userService, webComponentService, worldService);
       expect(appCtrl.user, equals("user"));
       expect(appCtrl.authentUrl, equals("url/auth/github/send"));
-      expect(scope['world'], equals("a world"));
+      expect(scope.context['world'], equals("a world"));
     });
   });
 }

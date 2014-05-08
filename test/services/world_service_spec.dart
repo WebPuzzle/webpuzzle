@@ -14,25 +14,25 @@ testWorldService() {
       router = new RouterTestWorldService();
       routeProvider = new RouteProviderTestWorldService();
       scope = new ScopeTestWorldService();
-      scope.when(callsTo(r"get $root")).thenReturn(new ScopeTestWorldService(), 2);
+      scope.when(callsTo(r"get rootScope")).thenReturn(new ScopeTestWorldService(), 2);
       html.window.localStorage.clear();
     });
     
     test("should initialize world_service without world", () {
       WorldService worldService = new WorldService(router, routeProvider, scope);
       expect(worldService.world, isNull);
-      scope.$root.getLogs(callsTo(r"$broadcast")).verify(happenedExactly(0));
+      scope.rootScope.getLogs(callsTo(r"broadcast")).verify(happenedExactly(0));
     });
     
     test("should initialize world_service with a world", () {
       html.window.localStorage['world'] = "angularjs";
-      scope.$root.when(callsTo(r"$broadcast")).thenReturn(null, 1);
+      scope.rootScope.when(callsTo(r"broadcast")).thenReturn(null, 1);
       WorldService worldService = new WorldService(router, routeProvider, scope);
       expect(worldService.world, "AngularJsWc");
     });
     
     test("should set world", () {
-      scope.$root.when(callsTo(r"$broadcast")).thenReturn(null, 1);
+      scope.rootScope.when(callsTo(r"broadcast")).thenReturn(null, 1);
       WorldService worldService = new WorldService(router, routeProvider, scope);
       worldService.world = "angularjs";
       expect(worldService.world, "AngularJsWc");
@@ -43,7 +43,7 @@ testWorldService() {
     test("should redirect the user", () {
       html.window.localStorage['world'] = "fakeWorld";
       router.when(callsTo("gotoUrl")).thenReturn(null);
-      scope.$root.when(callsTo(r"$broadcast")).thenReturn(null, 1);
+      scope.rootScope.when(callsTo(r"broadcast")).thenReturn(null, 1);
       WorldService worldService = new WorldService(router, routeProvider, scope);
       router.getLogs(callsTo("gotoUrl")).verify(happenedOnce);
     });

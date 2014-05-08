@@ -5,22 +5,25 @@ class WebComponentServiceTestDetail extends Mock implements WebComponentService{
   var selectedWC;
 }
 class WorldServiceTestDetail extends Mock implements WorldService{}
+class RouterTestDetail extends Mock implements Router{}
 
 testDetailCtrl() {
   group("[DetailCtrl", (){
     RouteProvider routeProvider;
     WebComponentService webComponentService;
     WorldService worldService;
+    Router router;
     
     setUp((){ 
       routeProvider = new RouteProviderTestDetail();
       webComponentService = new WebComponentServiceTestDetail();
       worldService = new WorldServiceTestDetail();
+      router = new RouterTestDetail();
     });
     
     test("should initialize with a selectedWC in WCService", (){
       webComponentService.selectedWC = {"name" : "I am a fake wc"};
-      DetailCtrl detailCtrl = new DetailCtrl(routeProvider, webComponentService, worldService);
+      DetailCtrl detailCtrl = new DetailCtrl(routeProvider, webComponentService, worldService, router);
       expect(detailCtrl.selectedWC["name"], equals("I am a fake wc"));
     });
     
@@ -29,7 +32,7 @@ testDetailCtrl() {
       webComponentService.when(callsTo("dataInitialized")).thenReturn(new Future.value(null));
       webComponentService.when(callsTo("selectCurrentWebComponentById"))
         .thenCall((int id) => webComponentService.selectedWC = {"name" : "I am a fake wc"});
-      DetailCtrl detailCtrl = new DetailCtrl(routeProvider, webComponentService, worldService);
+      DetailCtrl detailCtrl = new DetailCtrl(routeProvider, webComponentService, worldService, router);
       webComponentService.getLogs(callsTo("dataInitialized")).verify(happenedOnce);
       detailCtrl.testControllerInitializedAsync.then((d){
         expect(detailCtrl.selectedWC["name"], equals("I am a fake wc"));
@@ -38,13 +41,13 @@ testDetailCtrl() {
     
     test("should set up jsfiddle demo", (){
       webComponentService.selectedWC = {"demoLink" : "http://jsfiddle.net/jgoemat/kta95/"};
-      DetailCtrl detailCtrl = new DetailCtrl(routeProvider, webComponentService, worldService);
+      DetailCtrl detailCtrl = new DetailCtrl(routeProvider, webComponentService, worldService, router);
       expect(webComponentService.selectedWC["demoLinkUrl"], equals("http://jsfiddle.net/jgoemat/kta95/embedded/result,js,html,css/"));
     });
     
     test("should set up codepen demo", (){
       webComponentService.selectedWC = {"demoLink" : "http://codepen.io/bradleybossard/pen/KoyAa"};
-      DetailCtrl detailCtrl = new DetailCtrl(routeProvider, webComponentService, worldService);
+      DetailCtrl detailCtrl = new DetailCtrl(routeProvider, webComponentService, worldService, router);
       expect(webComponentService.selectedWC["codePen"]["user"], equals("bradleybossard"));
       expect(webComponentService.selectedWC["codePen"]["slugHash"], equals("KoyAa"));
     });

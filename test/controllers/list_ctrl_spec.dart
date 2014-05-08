@@ -32,6 +32,8 @@ testListCtrl(){
       
       worldService.when(callsTo("onChangeWorld")).thenReturn(null);
       scope.when(callsTo(r"$watch")).thenReturn(null, 2);
+      scope.when(callsTo("on")).thenReturn(new Mock()..when(callsTo("listen")).thenReturn(null));
+      scope.when(callsTo("get context")).thenReturn(new Map());
       //setting name directly is a workaround because 
       //name property exists in TestDouble class 
       router.when(callsTo("get activePath")).alwaysReturn(new List()
@@ -57,9 +59,9 @@ testListCtrl(){
     }); 
 
     test("should initialize controller", (){
-      scope.getLogs(callsTo(r"$on")).verify(happenedOnce);
-      scope.getLogs(callsTo(r"$watch")).verify(happenedExactly(2));
-      webComponentService.getLogs(callsTo("loadWc")).verify(happenedExactly(2));
+      scope.getLogs(callsTo(r"on")).verify(happenedOnce);
+      scope.getLogs(callsTo(r"watch")).verify(happenedExactly(2));
+      webComponentService.getLogs(callsTo("loadWc")).verify(happenedExactly(1));
       listCtrl.loadData().then((value){
         expect(listCtrl.webcomponents.length, equals(2));
       });
