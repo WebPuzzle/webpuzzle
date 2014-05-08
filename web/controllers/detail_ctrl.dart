@@ -10,12 +10,13 @@ class DetailCtrl {
   WebComponentService webComponentService;
   WorldService worldService;
   var selectedWC;
+  Router _router;
   
   //used in unit test
   Future testControllerInitializedAsync;
   
   //initialize selected web component and setsUp demo data
-  DetailCtrl (RouteProvider routeProvider , WebComponentService this.webComponentService, WorldService this.worldService){
+  DetailCtrl (RouteProvider routeProvider , WebComponentService this.webComponentService, WorldService this.worldService, Router this._router){
     selectedWC = webComponentService.selectedWC;
     currentId = int.parse(routeProvider.parameters["id"]);
     print("selectedWC : $selectedWC");
@@ -31,8 +32,15 @@ class DetailCtrl {
     }
   }
 
+  void goBackToList() {
+    webComponentService.deselectCurrentWebComponent();
+    _router.go('app', {
+        "world": worldService.getNiceWorld()
+    });
+  }
+
   //sets up demo data based on web component's demoLink
-  setUpDemo(selectedWC){
+  void setUpDemo(selectedWC){
     print("demoLink : ${selectedWC['demoLink']}");
     if (selectedWC != null){
       _extractDemoType(selectedWC['demoLink']);
@@ -50,7 +58,7 @@ class DetailCtrl {
     }
   }
 
-  _extractDemoType(demoLink){
+  void _extractDemoType(demoLink){
     var regExpIsJsFiddle = new RegExp(r'/.*jsfiddle.*/');
     var regExpIsCodePen = new RegExp(r'/.*codepen.*/');
     var regExpIsPlunker = new RegExp(r'/.*plnkr.*/');
@@ -68,12 +76,12 @@ class DetailCtrl {
     print("extracted demoType : ${selectedWC['demoType']}");
   }
 
-  _setUpJsFiddleData(demoLink){
+  void _setUpJsFiddleData(demoLink){
     selectedWC['demoLinkUrl'] = demoLink + 'embedded/result,js,html,css/';
     print('demoLinkUrl = ' + selectedWC['demoLinkUrl']);
   }
 
-  _setUpCodePenData(demoLink){
+  void _setUpCodePenData(demoLink){
     print("set up code pen for demoLink = $demoLink");
     var regExpCodePen = new RegExp(r'/codepen\.io/(.*)/pen/(.*)');
     var matches = regExpCodePen.allMatches(demoLink);
@@ -83,7 +91,7 @@ class DetailCtrl {
     };
   }
   
-  _setUpPlunkerData(demoLink){
+  void _setUpPlunkerData(demoLink){
     print("demoLink $demoLink");
     //supports those formats :
     //http://plnkr.co/ofvGnY
